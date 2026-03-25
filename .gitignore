@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+.env
+.parcel-cache
+.cache
+.temp
+.tmp
+package-lock.json

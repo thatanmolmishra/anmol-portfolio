@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media — Anmol Mishra</title>
+  <meta name="description" content="Media appearances, press features, and speaking engagements of Anmol Mishra." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="stylesheet" href="/src/subpage.css" />
+</head>
+<body class="subpage-body">
+  <div id="cursor"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
+
+  <nav class="subpage-nav">
+    <a href="/" class="nav-logo">AM</a>
+    <a href="/" class="nav-back">← Back to Portfolio</a>
+  </nav>
+
+  <div class="subpage-hero">
+    <span class="section-tag">Media & Press</span>
+    <h1 class="subpage-title">In The<br/><em>Spotlight</em></h1>
+    <p class="subpage-sub">TV appearances, speaking panels, conferences, and global programs.</p>
+  </div>
+
+  <div class="subpage-content">
+
+    <div class="media-stat-bar">
+      <div class="media-stat"><span class="ms-num">110K+</span><span class="ms-label">Live Viewers</span></div>
+      <div class="media-stat"><span class="ms-num">15M+</span><span class="ms-label">Digital Impressions</span></div>
+      <div class="media-stat"><span class="ms-num">25+</span><span class="ms-label">Policymakers Reached</span></div>
+      <div class="media-stat"><span class="ms-num">5+</span><span class="ms-label">Speaking Engagements</span></div>
+    </div>
+
+    <div class="media-grid">
+
+      <div class="media-card featured">
+        <div class="media-badge">📡 Live Global Panel</div>
+        <div class="media-content">
+          <div class="media-org">UN75 × 1M1B × AWS</div>
+          <h3>Chat with Purpose: Coding for SDGs</h3>
+          <p>Featured as a youth panelist in a global session on coding for UN Sustainable Development Goals. Discussed tech-driven social impact using Scratch, ASCII, and unplugged coding for SDG-aligned initiatives.</p>
+          <div class="media-stats-row">
+            <span>110K+ live viewers</span>
+            <span>15M+ digital impressions</span>
+          </div>
+          <div class="media-panel">
+            <span class="mp-person">Sunil PP — Head of Education & NPOs, AWS India & South Asia</span>
+            <span class="mp-person">Amit Nevatia — Education Program Lead, AWS</span>
+          </div>
+          <div class="media-date">October 2021</div>
+        </div>
+      </div>
+
+      <div class="media-card featured">
+        <div class="media-badge">📺 National TV</div>
+        <div class="media-content">
+          <div class="media-org">Epic Channel</div>
+          <h3>Epic IQ Challenge — Top 3</h3>
+          <p>Competed in the national TV quiz show "Epic IQ Challenge," filmed at Mumbai's Film City and aired on Epic Channel. Finished in the top 3 nationally, competing against some of India's brightest minds.</p>
+          <div class="media-date">Mumbai · Epic Channel</div>
+        </div>
+      </div>
+
+      <div class="media-card">
+        <div class="media-badge">🎤 Speaker</div>
+        <div class="media-content">
+          <div class="media-org">CBSE × IBM</div>
+          <h3>Future of Skills, AI & Education</h3>
+          <p>Invited as a distinguished guest speaker to share insights on the future of skills, AI, and purpose-driven education at the CBSE–IBM event.</p>
+          <div class="media-date">2021</div>
+        </div>
+      </div>
+
+      <div class="media-card">
+        <div class="media-badge">🏛 State Guest</div>
+        <div class="media-content">
+          <div class="media-org">NITI Aayog · Government of India</div>
+          <h3>Independence Day — Red Fort</h3>
+          <p>Invited as Special Guest for India's Independence Day celebrations at Red Fort by NITI Aayog as part of the AIM Marathon, celebrating youth innovation and excellence.</p>
+          <div class="media-date">Independence Day · New Delhi</div>
+        </div>
+      </div>
+
+      <div class="media-card">
+        <div class="media-badge">🌏 Conference</div>
+        <div class="media-content">
+          <div class="media-org">HPAIR — Harvard Project</div>
+          <h3>Asia-Pacific Policy Dialogue — Tokyo</h3>
+          <p>Represented India as a Delegate at HPAIR 2025 in Tokyo, Japan. Engaged in cross-cultural dialogue on global policy, sustainability, and innovation with international delegates and industry leaders.</p>
+          <div class="media-date">August 2025 · Tokyo, Japan</div>
+        </div>
+      </div>
+
+      <div class="media-card">
+        <div class="media-badge">📰 Featured</div>
+        <div class="media-content">
+          <div class="media-org">IBM</div>
+          <h3>IBM Compendium 2022</h3>
+          <p>Featured in the IBM Compendium 2022 for outstanding contributions to the IBM EdTech Youth Challenge, along with Ambassador Recognition at the IBM Summit.</p>
+          <div class="media-date">2022</div>
+        </div>
+      </div>
+
+      <div class="media-card">
+        <div class="media-badge">🌿 Conference</div>
+        <div class="media-content">
+          <div class="media-org">GRUEN · Erasmus+ EU</div>
+          <h3>Green Urban Environments eConference</h3>
+          <p>Presented the "green city" model designed as part of the GRUEN competition to 25+ policymakers, experts, and educators at the GRUEN eConference after securing 3rd place globally.</p>
+          <div class="media-date">November 2021 · Virtual</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let rx = 0, ry = 0;
+    window.addEventListener('mousemove', e => {
+      dot.style.left = e.clientX + 'px';
+      dot.style.top = e.clientY + 'px';
+    });
+    (function animate() {
+      rx += (parseFloat(dot.style.left||0) - rx) * 0.12;
+      ry += (parseFloat(dot.style.top||0) - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(animate);
+    })();
+  </script>
+</body>
+</html>
