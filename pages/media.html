@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Media — Anmol Mishra</title>
-  <meta name="description" content="Media appearances, press features, and speaking engagements of Anmol Mishra." />
+  <meta name="description" content="Media appearances, press features, YouTube, newspapers, and speaking engagements of Anmol Mishra." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -27,6 +27,7 @@
 
   <div class="subpage-content">
 
+    <!-- Stat Bar -->
     <div class="media-stat-bar">
       <div class="media-stat"><span class="ms-num">110K+</span><span class="ms-label">Live Viewers</span></div>
       <div class="media-stat"><span class="ms-num">15M+</span><span class="ms-label">Digital Impressions</span></div>
@@ -34,90 +35,292 @@
       <div class="media-stat"><span class="ms-num">5+</span><span class="ms-label">Speaking Engagements</span></div>
     </div>
 
-    <div class="media-grid">
-
-      <div class="media-card featured">
-        <div class="media-badge">📡 Live Global Panel</div>
-        <div class="media-content">
-          <div class="media-org">UN75 × 1M1B × AWS</div>
-          <h3>Chat with Purpose: Coding for SDGs</h3>
-          <p>Featured as a youth panelist in a global session on coding for UN Sustainable Development Goals. Discussed tech-driven social impact using Scratch, ASCII, and unplugged coding for SDG-aligned initiatives.</p>
-          <div class="media-stats-row">
-            <span>110K+ live viewers</span>
-            <span>15M+ digital impressions</span>
-          </div>
-          <div class="media-panel">
-            <span class="mp-person">Sunil PP — Head of Education & NPOs, AWS India & South Asia</span>
-            <span class="mp-person">Amit Nevatia — Education Program Lead, AWS</span>
-          </div>
-          <div class="media-date">October 2021</div>
-        </div>
-      </div>
-
-      <div class="media-card featured">
-        <div class="media-badge">📺 National TV</div>
-        <div class="media-content">
-          <div class="media-org">Epic Channel</div>
-          <h3>Epic IQ Challenge — Top 3</h3>
-          <p>Competed in the national TV quiz show "Epic IQ Challenge," filmed at Mumbai's Film City and aired on Epic Channel. Finished in the top 3 nationally, competing against some of India's brightest minds.</p>
-          <div class="media-date">Mumbai · Epic Channel</div>
-        </div>
-      </div>
-
-      <div class="media-card">
-        <div class="media-badge">🎤 Speaker</div>
-        <div class="media-content">
-          <div class="media-org">CBSE × IBM</div>
-          <h3>Future of Skills, AI & Education</h3>
-          <p>Invited as a distinguished guest speaker to share insights on the future of skills, AI, and purpose-driven education at the CBSE–IBM event.</p>
-          <div class="media-date">2021</div>
-        </div>
-      </div>
-
-      <div class="media-card">
-        <div class="media-badge">🏛 State Guest</div>
-        <div class="media-content">
-          <div class="media-org">NITI Aayog · Government of India</div>
-          <h3>Independence Day — Red Fort</h3>
-          <p>Invited as Special Guest for India's Independence Day celebrations at Red Fort by NITI Aayog as part of the AIM Marathon, celebrating youth innovation and excellence.</p>
-          <div class="media-date">Independence Day · New Delhi</div>
-        </div>
-      </div>
-
-      <div class="media-card">
-        <div class="media-badge">🌏 Conference</div>
-        <div class="media-content">
-          <div class="media-org">HPAIR — Harvard Project</div>
-          <h3>Asia-Pacific Policy Dialogue — Tokyo</h3>
-          <p>Represented India as a Delegate at HPAIR 2025 in Tokyo, Japan. Engaged in cross-cultural dialogue on global policy, sustainability, and innovation with international delegates and industry leaders.</p>
-          <div class="media-date">August 2025 · Tokyo, Japan</div>
-        </div>
-      </div>
-
-      <div class="media-card">
-        <div class="media-badge">📰 Featured</div>
-        <div class="media-content">
-          <div class="media-org">IBM</div>
-          <h3>IBM Compendium 2022</h3>
-          <p>Featured in the IBM Compendium 2022 for outstanding contributions to the IBM EdTech Youth Challenge, along with Ambassador Recognition at the IBM Summit.</p>
-          <div class="media-date">2022</div>
-        </div>
-      </div>
-
-      <div class="media-card">
-        <div class="media-badge">🌿 Conference</div>
-        <div class="media-content">
-          <div class="media-org">GRUEN · Erasmus+ EU</div>
-          <h3>Green Urban Environments eConference</h3>
-          <p>Presented the "green city" model designed as part of the GRUEN competition to 25+ policymakers, experts, and educators at the GRUEN eConference after securing 3rd place globally.</p>
-          <div class="media-date">November 2021 · Virtual</div>
-        </div>
-      </div>
-
+    <!-- Tab Bar -->
+    <div class="media-tab-bar" role="tablist">
+      <button class="media-tab-btn active" data-tab="all" role="tab" aria-selected="true">All</button>
+      <button class="media-tab-btn" data-tab="youtube" role="tab" aria-selected="false">YouTube</button>
+      <button class="media-tab-btn" data-tab="newspapers" role="tab" aria-selected="false">Newspapers</button>
+      <button class="media-tab-btn" data-tab="celebs" role="tab" aria-selected="false">Celebs</button>
     </div>
-  </div>
+
+    <!-- ALL TAB -->
+    <div id="tab-all" class="media-tab-panel active">
+      <div class="ach-block-grid">
+
+        <div class="ach-block-card featured">
+          <div class="ach-block-slider" data-images='["/img/media/med1.jpg","/img/media/med2.jpg","/img/media/med3.jpg"]'>
+            <img class="ach-slide-img" src="/img/media/med1.jpg" alt="UN75 Global Panel" />
+            <button class="ach-slide-btn ach-slide-prev" aria-label="Previous">&#8592;</button>
+            <button class="ach-slide-btn ach-slide-next" aria-label="Next">&#8594;</button>
+            <div class="ach-slide-counter"><span class="ach-slide-cur">1</span> / <span class="ach-slide-total">3</span></div>
+          </div>
+          <div class="ach-block-body">
+            <div class="ach-block-badge">Live Global Panel</div>
+            <div class="media-org">UN75 × 1M1B × AWS</div>
+            <h3>Chat with Purpose: Coding for SDGs</h3>
+            <p>Featured as a youth panelist in a global session on coding for UN Sustainable Development Goals. The session reached 110K+ live viewers and 15M+ digital impressions.</p>
+            <div class="media-stats-row"><span>110K+ live viewers</span><span>15M+ digital impressions</span></div>
+            <div class="media-date">October 2021</div>
+          </div>
+        </div>
+
+        <div class="ach-block-card featured">
+          <div class="ach-block-slider" data-images='["/img/media/med2.jpg","/img/media/med1.jpg"]'>
+            <img class="ach-slide-img" src="/img/media/med2.jpg" alt="Epic IQ Challenge" />
+            <button class="ach-slide-btn ach-slide-prev" aria-label="Previous">&#8592;</button>
+            <button class="ach-slide-btn ach-slide-next" aria-label="Next">&#8594;</button>
+            <div class="ach-slide-counter"><span class="ach-slide-cur">1</span> / <span class="ach-slide-total">2</span></div>
+          </div>
+          <div class="ach-block-body">
+            <div class="ach-block-badge">National TV</div>
+            <div class="media-org">Epic Channel</div>
+            <h3>Epic IQ Challenge — Top 3</h3>
+            <p>Competed in the national TV quiz show "Epic IQ Challenge," filmed at Mumbai's Film City and aired on Epic Channel. Finished in the top 3 nationally.</p>
+            <div class="media-date">Mumbai · Epic Channel</div>
+          </div>
+        </div>
+
+        <div class="ach-block-card">
+          <div class="ach-block-slider" data-images='["/img/media/med3.jpg"]'>
+            <img class="ach-slide-img" src="/img/media/med3.jpg" alt="CBSE IBM" />
+            <button class="ach-slide-btn ach-slide-prev" aria-label="Previous">&#8592;</button>
+            <button class="ach-slide-btn ach-slide-next" aria-label="Next">&#8594;</button>
+            <div class="ach-slide-counter"><span class="ach-slide-cur">1</span> / <span class="ach-slide-total">1</span></div>
+          </div>
+          <div class="ach-block-body">
+            <div class="ach-block-badge">Speaker</div>
+            <div class="media-org">CBSE × IBM</div>
+            <h3>Future of Skills, AI & Education</h3>
+            <p>Invited as a distinguished guest speaker to share insights on the future of skills, AI, and purpose-driven education at the CBSE–IBM event.</p>
+            <div class="media-date">2021</div>
+          </div>
+        </div>
+
+        <div class="ach-block-card">
+          <div class="ach-block-slider" data-images='["/img/media/med1.jpg","/img/media/med3.jpg"]'>
+            <img class="ach-slide-img" src="/img/media/med1.jpg" alt="NITI Aayog" />
+            <button class="ach-slide-btn ach-slide-prev" aria-label="Previous">&#8592;</button>
+            <button class="ach-slide-btn ach-slide-next" aria-label="Next">&#8594;</button>
+            <div class="ach-slide-counter"><span class="ach-slide-cur">1</span> / <span class="ach-slide-total">2</span></div>
+          </div>
+          <div class="ach-block-body">
+            <div class="ach-block-badge">State Guest</div>
+            <div class="media-org">NITI Aayog · Government of India</div>
+            <h3>Independence Day — Red Fort</h3>
+            <p>Invited as Special Guest for India's Independence Day celebrations at Red Fort by NITI Aayog as part of the AIM Marathon, celebrating youth innovation.</p>
+            <div class="media-date">Independence Day · New Delhi</div>
+          </div>
+        </div>
+
+        <div class="ach-block-card">
+          <div class="ach-block-slider" data-images='["/img/global/glb1.jpg","/img/global/glb3.jpg"]'>
+            <img class="ach-slide-img" src="/img/global/glb1.jpg" alt="HPAIR Tokyo" />
+            <button class="ach-slide-btn ach-slide-prev" aria-label="Previous">&#8592;</button>
+            <button class="ach-slide-btn ach-slide-next" aria-label="Next">&#8594;</button>
+            <div class="ach-slide-counter"><span class="ach-slide-cur">1</span> / <span class="ach-slide-total">2</span></div>
+          </div>
+          <div class="ach-block-body">
+            <div class="ach-block-badge">Conference</div>
+            <div class="media-org">HPAIR — Harvard Project</div>
+            <h3>Asia-Pacific Policy Dialogue — Tokyo</h3>
+            <p>Represented India as a Delegate at HPAIR 2025 in Tokyo, Japan. Engaged in cross-cultural dialogue on global policy, sustainability, and innovation.</p>
+            <div class="media-date">August 2025 · Tokyo, Japan</div>
+          </div>
+        </div>
+
+        <div class="ach-block-card">
+          <div class="ach-block-slider" data-images='["/img/media/med2.jpg"]'>
+            <img class="ach-slide-img" src="/img/media/med2.jpg" alt="IBM Compendium" />
+            <button class="ach-slide-btn ach-slide-prev" aria-label="Previous">&#8592;</button>
+            <button class="ach-slide-btn ach-slide-next" aria-label="Next">&#8594;</button>
+            <div class="ach-slide-counter"><span class="ach-slide-cur">1</span> / <span class="ach-slide-total">1</span></div>
+          </div>
+          <div class="ach-block-body">
+            <div class="ach-block-badge">Featured</div>
+            <div class="media-org">IBM</div>
+            <h3>IBM Compendium 2022</h3>
+            <p>Featured in the IBM Compendium 2022 for outstanding contributions to the IBM EdTech Youth Challenge, along with Ambassador Recognition at the IBM Summit.</p>
+            <div class="media-date">2022</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- YOUTUBE TAB -->
+    <div id="tab-youtube" class="media-tab-panel">
+      <!-- YouTube Sub-tabs -->
+      <div class="yt-subtab-bar">
+        <button class="yt-subtab-btn active" data-subtab="videos">Videos</button>
+        <button class="yt-subtab-btn" data-subtab="shorts">Shorts</button>
+      </div>
+
+      <!-- Videos sub-panel -->
+      <div id="subtab-videos" class="yt-subtab-panel active">
+        <div class="yt-grid">
+
+          <div class="yt-card" data-yt-id="dQw4w9WgXcQ">
+            <div class="yt-thumb-wrap">
+              <img class="yt-thumb" src="/img/media/youtube/yt1.jpg" alt="YT Video 1" />
+              <div class="yt-play-overlay"><div class="yt-play-icon">&#9654;</div></div>
+              <div class="yt-embed-frame" style="display:none;">
+                <iframe frameborder="0" allowfullscreen allow="autoplay; encrypted-media" src="" title="YouTube Video"></iframe>
+              </div>
+            </div>
+            <div class="yt-card-body">
+              <h4>Chat with Purpose: Coding for SDGs</h4>
+              <p>Youth panelist session on coding for UN Sustainable Development Goals. 110K+ live viewers.</p>
+              <span class="yt-label">UN75 × 1M1B × AWS · October 2021</span>
+            </div>
+          </div>
+
+          <div class="yt-card" data-yt-id="dQw4w9WgXcQ">
+            <div class="yt-thumb-wrap">
+              <img class="yt-thumb" src="/img/media/youtube/yt2.jpg" alt="YT Video 2" />
+              <div class="yt-play-overlay"><div class="yt-play-icon">&#9654;</div></div>
+              <div class="yt-embed-frame" style="display:none;">
+                <iframe frameborder="0" allowfullscreen allow="autoplay; encrypted-media" src="" title="YouTube Video"></iframe>
+              </div>
+            </div>
+            <div class="yt-card-body">
+              <h4>IBM EdTech Youth Challenge — Winner Story</h4>
+              <p>Behind the scenes of winning IBM's national EdTech Youth Challenge and receiving Ambassador recognition.</p>
+              <span class="yt-label">IBM · 2022</span>
+            </div>
+          </div>
+
+          <div class="yt-card" data-yt-id="dQw4w9WgXcQ">
+            <div class="yt-thumb-wrap">
+              <img class="yt-thumb" src="/img/media/youtube/yt3.jpg" alt="YT Video 3" />
+              <div class="yt-play-overlay"><div class="yt-play-icon">&#9654;</div></div>
+              <div class="yt-embed-frame" style="display:none;">
+                <iframe frameborder="0" allowfullscreen allow="autoplay; encrypted-media" src="" title="YouTube Video"></iframe>
+              </div>
+            </div>
+            <div class="yt-card-body">
+              <h4>GRUEN — Presenting to EU Policymakers</h4>
+              <p>Presenting the green city model to 25+ policymakers at the Erasmus+ GRUEN eConference after placing 3rd globally.</p>
+              <span class="yt-label">GRUEN · Erasmus+ EU · November 2021</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Shorts sub-panel -->
+      <div id="subtab-shorts" class="yt-subtab-panel">
+        <div class="yt-shorts-grid">
+
+          <div class="yt-card yt-short-card" data-yt-id="dQw4w9WgXcQ">
+            <div class="yt-short-thumb-wrap">
+              <img class="yt-thumb" src="/img/media/youtube/short1.jpg" alt="Short 1" />
+              <div class="yt-play-overlay"><div class="yt-play-icon">&#9654;</div></div>
+              <div class="yt-embed-frame yt-short-frame" style="display:none;">
+                <iframe frameborder="0" allowfullscreen allow="autoplay; encrypted-media" src="" title="YouTube Short"></iframe>
+              </div>
+            </div>
+            <div class="yt-card-body">
+              <h4>Top 3 on National TV</h4>
+              <span class="yt-label">Epic IQ Challenge · Epic Channel</span>
+            </div>
+          </div>
+
+          <div class="yt-card yt-short-card" data-yt-id="dQw4w9WgXcQ">
+            <div class="yt-short-thumb-wrap">
+              <img class="yt-thumb" src="/img/media/youtube/short2.jpg" alt="Short 2" />
+              <div class="yt-play-overlay"><div class="yt-play-icon">&#9654;</div></div>
+              <div class="yt-embed-frame yt-short-frame" style="display:none;">
+                <iframe frameborder="0" allowfullscreen allow="autoplay; encrypted-media" src="" title="YouTube Short"></iframe>
+              </div>
+            </div>
+            <div class="yt-card-body">
+              <h4>Red Fort Independence Day Moment</h4>
+              <span class="yt-label">NITI Aayog · AIM Marathon</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- NEWSPAPERS TAB -->
+    <div id="tab-newspapers" class="media-tab-panel">
+      <div class="news-grid">
+
+        <div class="news-card">
+          <img src="/img/media/newspapers/news1.jpg" alt="Newspaper feature 1" class="news-img" />
+          <div class="news-card-body">
+            <span class="news-badge">Feature</span>
+            <h4>Youth Innovator Wins IBM National Challenge</h4>
+            <p>Coverage of the IBM EdTech Youth Challenge win and the journey to becoming a national ambassador.</p>
+            <span class="news-date">2022</span>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="/img/media/newspapers/news2.jpg" alt="Newspaper feature 2" class="news-img" />
+          <div class="news-card-body">
+            <span class="news-badge">Interview</span>
+            <h4>From Himachal to the World Stage</h4>
+            <p>Profile piece covering the journey from CBSE top scorer to global youth innovator and UN panel speaker.</p>
+            <span class="news-date">2021</span>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="/img/media/newspapers/news3.jpg" alt="Newspaper feature 3" class="news-img" />
+          <div class="news-card-body">
+            <span class="news-badge">Report</span>
+            <h4>IIT Student Represents India at Harvard Conference</h4>
+            <p>Report on representing India as a delegate at HPAIR 2025 in Tokyo and contributing to Asia-Pacific policy dialogues.</p>
+            <span class="news-date">2025</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CELEBS TAB -->
+    <div id="tab-celebs" class="media-tab-panel">
+      <div class="celeb-grid">
+
+        <div class="celeb-card">
+          <div class="celeb-img-wrap">
+            <img src="/img/media/celebs/celeb1.jpg" alt="Celeb photo 1" />
+          </div>
+          <div class="celeb-caption">
+            <h4>Special Guest, Red Fort</h4>
+            <span>Independence Day Celebration · NITI Aayog</span>
+          </div>
+        </div>
+
+        <div class="celeb-card">
+          <div class="celeb-img-wrap">
+            <img src="/img/media/celebs/celeb2.jpg" alt="Celeb photo 2" />
+          </div>
+          <div class="celeb-caption">
+            <h4>IBM Summit</h4>
+            <span>Ambassador Recognition Ceremony · IBM India</span>
+          </div>
+        </div>
+
+        <div class="celeb-card">
+          <div class="celeb-img-wrap">
+            <img src="/img/media/celebs/celeb3.jpg" alt="Celeb photo 3" />
+          </div>
+          <div class="celeb-caption">
+            <h4>HPAIR Tokyo</h4>
+            <span>Asia-Pacific Policy Dialogue · Harvard Project</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /subpage-content -->
 
   <script>
+    // Cursor
     const dot = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
     let rx = 0, ry = 0;
@@ -132,6 +335,75 @@
       ring.style.top = ry + 'px';
       requestAnimationFrame(animate);
     })();
+
+    // Main Tabs
+    document.querySelectorAll('.media-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.media-tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        document.querySelectorAll('.media-tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected','true');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // YouTube Sub-tabs
+    document.querySelectorAll('.yt-subtab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.yt-subtab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.yt-subtab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('subtab-' + btn.dataset.subtab).classList.add('active');
+      });
+    });
+
+    // Image Sliders
+    document.querySelectorAll('.ach-block-slider').forEach(slider => {
+      const images = JSON.parse(slider.dataset.images);
+      let cur = 0;
+      const img = slider.querySelector('.ach-slide-img');
+      const curEl = slider.querySelector('.ach-slide-cur');
+      const prevBtn = slider.querySelector('.ach-slide-prev');
+      const nextBtn = slider.querySelector('.ach-slide-next');
+      const update = () => {
+        img.style.opacity = 0;
+        setTimeout(() => { img.src = images[cur]; img.style.opacity = 1; }, 150);
+        curEl.textContent = cur + 1;
+      };
+      prevBtn.addEventListener('click', () => { cur = (cur - 1 + images.length) % images.length; update(); });
+      nextBtn.addEventListener('click', () => { cur = (cur + 1) % images.length; update(); });
+      if (images.length <= 1) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; }
+    });
+
+    // YouTube Play Inline
+    document.querySelectorAll('.yt-card').forEach(card => {
+      const overlay = card.querySelector('.yt-play-overlay');
+      const thumb = card.querySelector('img.yt-thumb');
+      const frame = card.querySelector('.yt-embed-frame');
+      const iframe = frame.querySelector('iframe');
+      const ytId = card.dataset.ytId;
+      if (!overlay) return;
+      overlay.addEventListener('click', () => {
+        iframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;
+        thumb.style.display = 'none';
+        overlay.style.display = 'none';
+        frame.style.display = 'block';
+      });
+    });
   </script>
+  <footer class="subpage-footer">
+    <div class="social-footer-inner">
+      <span class="social-footer-label">Find me on</span>
+      <div class="social-links-row">
+        <a href="https://www.instagram.com/thatanmolmishra" target="_blank" rel="noopener" class="social-link">Instagram</a>
+        <a href="mailto:anmolmishrawork@gmail.com" class="social-link">Email</a>
+        <a href="https://www.linkedin.com/in/thatanmolmishra" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
+        <a href="https://github.com/thatanmolmishra" target="_blank" rel="noopener" class="social-link">GitHub</a>
+        <a href="https://www.imdb.com/name/nm0000000/" target="_blank" rel="noopener" class="social-link">IMDb</a>
+        <a href="https://twitter.com/thatanmolmishra" target="_blank" rel="noopener" class="social-link">Twitter / X</a>
+      </div>
+      <p class="social-footer-copy">© 2025 Anmol Mishra. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>

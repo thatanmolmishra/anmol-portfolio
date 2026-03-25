@@ -11,6 +11,7 @@ export default defineConfig({
         experience: resolve(__dirname, 'pages/experience.html'),
         skills: resolve(__dirname, 'pages/skills.html'),
         media: resolve(__dirname, 'pages/media.html'),
+        global: resolve(__dirname, 'pages/global.html'),
       }
     }
   }
