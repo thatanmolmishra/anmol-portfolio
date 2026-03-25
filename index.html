@@ -1,13 +1,413 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>anmol-portfolio</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Anmol Mishra — AI Researcher, Builder, Speaker. IIT Madras & IIT Kharagpur. Cinematic portfolio." />
+  <title>Anmol Mishra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <!-- Cursor -->
+  <div id="cursor">
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+  </div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-logo">AM</div>
+      <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
+      <div class="loader-text" id="loader-text">Loading...</div>
+    </div>
+  </div>
+
+  <!-- Nav Dots -->
+  <nav id="zone-nav" aria-label="Zone Navigation">
+    <ul id="nav-dots">
+      <li data-zone="0" class="active"><span class="dot"></span><span class="dot-label">Home</span></li>
+      <li data-zone="1"><span class="dot"></span><span class="dot-label">About</span></li>
+      <li data-zone="2"><span class="dot"></span><span class="dot-label">Experience</span></li>
+      <li data-zone="3"><span class="dot"></span><span class="dot-label">Skills</span></li>
+      <li data-zone="4"><span class="dot"></span><span class="dot-label">Achievements</span></li>
+      <li data-zone="5"><span class="dot"></span><span class="dot-label">Projects</span></li>
+      <li data-zone="6"><span class="dot"></span><span class="dot-label">Global</span></li>
+      <li data-zone="7"><span class="dot"></span><span class="dot-label">Contact</span></li>
+    </ul>
+  </nav>
+
+  <!-- Zone Label -->
+  <div id="zone-label">
+    <span id="zone-number">01</span>
+    <span id="zone-name">HOME</span>
+  </div>
+
+  <!-- Progress -->
+  <div id="progress-bar"><div id="progress-fill"></div></div>
+
+  <!-- Media FAB -->
+  <div id="media-fab"><a href="/pages/media.html">▶ Media</a></div>
+
+  <!-- ===========================
+       ZONE OVERLAYS
+       =========================== -->
+
+  <!-- ZONE 0: HOME -->
+  <section class="zone-overlay" id="overlay-0" data-zone="0">
+    <div class="hero-split">
+      <div class="hero-left">
+        <p class="hero-eyebrow">Software Engineer &amp; Researcher</p>
+        <h1 class="hero-name">
+          <span class="name-first">Anmol</span>
+          <span class="name-last">Mishra</span>
+        </h1>
+        <div class="hero-roles">
+          <span class="hero-role-chip">AI Researcher</span>
+          <span class="hero-role-chip">Builder</span>
+          <span class="hero-role-chip">Speaker</span>
+          <span class="hero-role-chip">IIT Madras</span>
+          <span class="hero-role-chip">IIT KGP</span>
+        </div>
+        <div class="hero-cta-row">
+          <a href="#" class="btn-primary" id="btn-explore" onclick="window.scrollTo({top:window.innerHeight*1.2,behavior:'smooth'});return false;">Enter World</a>
+          <a href="/pages/projects.html" class="btn-ghost">Projects →</a>
+        </div>
+        <div class="hero-scroll-hint">
+          <div class="scroll-line-h"></div>
+          <span>Scroll</span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-img-frame">
+          <img src="/img/hero.png" alt="Editorial portrait" loading="eager" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONE 1: ABOUT -->
+  <section class="zone-overlay" id="overlay-1" data-zone="1">
+    <div class="about-split">
+      <div class="about-img-frame">
+        <img src="/img/about.png" alt="Workspace" loading="lazy" />
+      </div>
+      <div class="about-right">
+        <span class="section-eyebrow">01 — About</span>
+        <h2 class="section-title">The Person<br/><em>Behind the Code</em></h2>
+        <p class="about-bio-text">Builder at the intersection of <strong>AI, design, and impact</strong>. Pursuing dual degrees at <strong>IIT Madras</strong> (Data Science) and <strong>LPU</strong> (CS Engineering, Big Data Analytics).</p>
+        <p class="about-bio-text">From multimodal AI research at IIT Kharagpur to leading product strategy, I move fast, build things that matter, and speak where it counts.</p>
+        <div class="about-stats">
+          <div class="stat-block"><span class="stat-n">4+</span><span class="stat-l">Industry Roles</span></div>
+          <div class="stat-block"><span class="stat-n">15M+</span><span class="stat-l">Digital Reach</span></div>
+          <div class="stat-block"><span class="stat-n">3rd</span><span class="stat-l">Global EU Prize</span></div>
+          <div class="stat-block"><span class="stat-n">2</span><span class="stat-l">Degrees (Active)</span></div>
+        </div>
+        <div class="edu-row">
+          <div class="edu-block">
+            <div class="edu-mark"></div>
+            <div class="edu-info">
+              <h4>IIT Madras</h4>
+              <p>B.S. Data Science &amp; Applications · Aug 2023 – May 2027</p>
+            </div>
+          </div>
+          <div class="edu-block">
+            <div class="edu-mark"></div>
+            <div class="edu-info">
+              <h4>Lovely Professional University</h4>
+              <p>B.Tech CS Engineering (Big Data Analytics)</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-chips">
+          <a href="mailto:byanmolmishra@gmail.com" class="contact-chip">✉ Email</a>
+          <a href="https://linkedin.com/in/that-anmol-mishra" target="_blank" class="contact-chip">LinkedIn</a>
+          <a href="https://github.com/thatanmolmishra" target="_blank" class="contact-chip">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONE 2: EXPERIENCE (TIMELINE) -->
+  <section class="zone-overlay" id="overlay-2" data-zone="2">
+    <div style="max-width:760px; width:100%; padding: 0 7vw;">
+      <span class="section-eyebrow">02 — Experience</span>
+      <h2 class="section-title" style="margin-bottom:1.5rem;">Building At<br/><em>The Frontier</em></h2>
+      <div class="exp-timeline-wrap">
+        <!-- Spine -->
+        <div class="tl-spine">
+          <div class="tl-dot current"></div>
+          <div class="tl-line"></div>
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+          <div class="tl-dot"></div>
+        </div>
+        <!-- Items -->
+        <div class="tl-items">
+          <div class="tl-entry">
+            <div class="tl-date-label">June 2025 – July 2025</div>
+            <div class="tl-entry-card">
+              <div class="tl-company-row">
+                <span class="tl-company-badge">IIT Kharagpur</span>
+                <span class="tl-type">Research</span>
+              </div>
+              <div class="tl-role">Research Intern</div>
+              <ul class="tl-bullets">
+                <li>Fine-grained annotation &amp; evaluation of educational videos — Multimodal QA Data Collection project.</li>
+                <li>Proposed automatic subtitle correction pipeline for learning alignment &amp; accessibility.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-date-label">May 2024 – August 2024</div>
+            <div class="tl-entry-card">
+              <div class="tl-company-row">
+                <span class="tl-company-badge">Mind Inc.</span>
+                <span class="tl-type">Product</span>
+              </div>
+              <div class="tl-role">Associate Product Manager</div>
+              <ul class="tl-bullets">
+                <li>Conducted 10+ SWOT analyses; shaped Go-to-Market for F&amp;B products.</li>
+                <li>Built CozyPM with React; SQL &amp; Excel analytics boosted feasibility 60%.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-date-label">October 2021 – November 2021</div>
+            <div class="tl-entry-card">
+              <div class="tl-company-row">
+                <span class="tl-company-badge">IBM</span>
+                <span class="tl-type">Engineering</span>
+              </div>
+              <div class="tl-role">Student Intern</div>
+              <ul class="tl-bullets">
+                <li>Engineered notification alerts — 20% user savings, 15% engagement lift.</li>
+                <li>Presented to global panel including IBM VP &amp; CBSE secretaries.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-date-label">December 2020 – January 2021</div>
+            <div class="tl-entry-card">
+              <div class="tl-company-row">
+                <span class="tl-company-badge">Intel</span>
+                <span class="tl-type">AI</span>
+              </div>
+              <div class="tl-role">Student Apprentice — AI for Youth</div>
+              <ul class="tl-bullets">
+                <li>Specialised in data science, computer vision, and NLP over a two-month bootcamp.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/pages/experience.html" class="view-more-btn" style="margin-top:1rem;">View Full Timeline →</a>
+    </div>
+  </section>
+
+  <!-- ZONE 3: SKILLS -->
+  <section class="zone-overlay" id="overlay-3" data-zone="3">
+    <div style="width:100%; padding: 0 7vw;">
+      <span class="section-eyebrow">03 — Skills</span>
+      <h2 class="section-title">Toolkit &amp;<br/><em>Core Competencies</em></h2>
+      <div class="skills-clusters">
+        <div class="skill-cluster-block">
+          <span class="sc-label">Languages</span>
+          <div class="sc-tags"><span class="sc-tag">Python</span><span class="sc-tag">JavaScript</span><span class="sc-tag">C / C++</span><span class="sc-tag">Java</span><span class="sc-tag">SQL</span><span class="sc-tag">HTML/CSS</span></div>
+        </div>
+        <div class="skill-cluster-block">
+          <span class="sc-label">Frameworks</span>
+          <div class="sc-tags"><span class="sc-tag">React.js</span><span class="sc-tag">Three.js</span><span class="sc-tag">GSAP</span><span class="sc-tag">Node.js</span><span class="sc-tag">Vite</span></div>
+        </div>
+        <div class="skill-cluster-block">
+          <span class="sc-label">AI / ML</span>
+          <div class="sc-tags"><span class="sc-tag">Computer Vision</span><span class="sc-tag">NLP</span><span class="sc-tag">Data Science</span><span class="sc-tag">Big Data</span><span class="sc-tag">Multimodal AI</span></div>
+        </div>
+        <div class="skill-cluster-block">
+          <span class="sc-label">Tools</span>
+          <div class="sc-tags"><span class="sc-tag">VS Code</span><span class="sc-tag">Google Colab</span><span class="sc-tag">IBM Cloud</span><span class="sc-tag">Git</span></div>
+        </div>
+        <div class="skill-cluster-block">
+          <span class="sc-label">Product</span>
+          <div class="sc-tags"><span class="sc-tag">SWOT Analysis</span><span class="sc-tag">Go-to-Market</span><span class="sc-tag">Wireframing</span><span class="sc-tag">Analytics</span></div>
+        </div>
+        <div class="skill-cluster-block">
+          <span class="sc-label">Languages</span>
+          <div class="sc-tags"><span class="sc-tag">English</span><span class="sc-tag">Hindi</span><span class="sc-tag">German (Basic)</span></div>
+        </div>
+      </div>
+      <a href="/pages/skills.html" class="view-more-btn" style="margin-top:1.25rem; display:inline-flex;">View Full Skills →</a>
+    </div>
+  </section>
+
+  <!-- ZONE 4: ACHIEVEMENTS -->
+  <section class="zone-overlay" id="overlay-4" data-zone="4">
+    <div class="ach-split">
+      <div class="ach-img-frame">
+        <img src="/img/achievements.png" alt="Achievement" loading="lazy" />
+      </div>
+      <div class="ach-right">
+        <span class="section-eyebrow">04 — Achievements</span>
+        <h2 class="section-title">Wins &amp;<br/><em>Recognition</em></h2>
+        <div class="ach-list">
+          <div class="ach-item">
+            <span class="ach-num">01</span>
+            <div class="ach-body">
+              <h4>NITI Aayog — Special Guest, Red Fort</h4>
+              <p>Invited by Govt. of India for Independence Day celebrations — AIM Marathon</p>
+            </div>
+          </div>
+          <div class="ach-item">
+            <span class="ach-num">02</span>
+            <div class="ach-body">
+              <h4>IBM EdTech Challenge — Top 3 India</h4>
+              <p>Featured IBM Compendium 2022 · Ambassador at IBM Summit</p>
+            </div>
+          </div>
+          <div class="ach-item">
+            <span class="ach-num">03</span>
+            <div class="ach-body">
+              <h4>Epic IQ Challenge — National Top 3</h4>
+              <p>National TV quiz at Mumbai Film City, aired on Epic Channel</p>
+            </div>
+          </div>
+          <div class="ach-item">
+            <span class="ach-num">04</span>
+            <div class="ach-body">
+              <h4>IBM Datathon Winner · Celesta 1st Runner-Up</h4>
+              <p>Multiple hackathon wins across India</p>
+            </div>
+          </div>
+        </div>
+        <a href="/pages/achievements.html" class="view-more-btn">View All Achievements →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONE 5: PROJECTS -->
+  <section class="zone-overlay" id="overlay-5" data-zone="5">
+    <div class="proj-split">
+      <div class="proj-img-frame">
+        <img src="/img/projects.png" alt="Projects" loading="lazy" />
+      </div>
+      <div class="proj-right">
+        <span class="section-eyebrow">05 — Projects</span>
+        <h2 class="section-title">Things I've<br/><em>Shipped</em></h2>
+        <div class="proj-list">
+          <div class="proj-item">
+            <span class="proj-n">01</span>
+            <div class="proj-info">
+              <h4>Multimodal QA Research — IIT Kharagpur</h4>
+              <p>Fine-grained video annotation pipeline + automatic subtitle correction system</p>
+              <div class="proj-tags"><span>Python</span><span>NLP</span><span>Computer Vision</span></div>
+            </div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-n">02</span>
+            <div class="proj-info">
+              <h4>CozyPM Platform — Mind Inc.</h4>
+              <p>Full React frontend with SQL analytics, boosted feasibility 60%</p>
+              <div class="proj-tags"><span>React</span><span>SQL</span><span>Analytics</span></div>
+            </div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-n">03</span>
+            <div class="proj-info">
+              <h4>IBM Expense Alert App</h4>
+              <p>20% cost reduction · 15% engagement lift · Delivered in 2 weeks</p>
+              <div class="proj-tags"><span>Mobile</span><span>IBM Cloud</span><span>UX</span></div>
+            </div>
+          </div>
+        </div>
+        <a href="/pages/projects.html" class="view-more-btn">View All Projects →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONE 6: GLOBAL PROGRAMS -->
+  <section class="zone-overlay" id="overlay-6" data-zone="6">
+    <div class="global-split">
+      <div class="global-img-frame">
+        <img src="/img/global.png" alt="Global" loading="lazy" />
+      </div>
+      <div class="global-right">
+        <span class="section-eyebrow">06 — Global Programs</span>
+        <h2 class="section-title">Impact Across<br/><em>Borders</em></h2>
+        <div class="global-list">
+          <div class="global-item">
+            <span class="global-flag">🇯🇵</span>
+            <div class="global-info">
+              <h4>HPAIR 2025 — Tokyo</h4>
+              <p>Delegate, India · Harvard Project for Asian &amp; International Relations</p>
+            </div>
+          </div>
+          <div class="global-item">
+            <span class="global-flag">🇪🇺</span>
+            <div class="global-info">
+              <h4>GRUEN — Global 3rd Place</h4>
+              <p>Erasmus+ EU sustainability design competition · Presented to 25+ policymakers</p>
+            </div>
+          </div>
+        </div>
+        <a href="/pages/global.html" class="view-more-btn">View Impact Across Borders →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONE 7: CONTACT -->
+  <section class="zone-overlay" id="overlay-7" data-zone="7">
+    <div class="contact-split">
+      <div class="contact-img-frame">
+        <img src="/img/contact.png" alt="Connect" loading="lazy" />
+      </div>
+      <div class="contact-right">
+        <span class="contact-eyebrow">07 — Let's Connect</span>
+        <h2 class="contact-heading">Ready to<br/><em>Make Something?</em></h2>
+        <p class="contact-sub">Research, product, code, or just a conversation about the future — reach out.</p>
+        <div class="contact-links">
+          <a href="mailto:anmolmishrawork@gmail.com" class="contact-link-row">
+            <span class="clr-icon">✉</span>
+            <span class="clr-text">anmolmishrawork@gmail.com</span>
+          </a>
+          <a href="https://linkedin.com/in/thatanmolmishra" target="_blank" class="contact-link-row">
+            <span class="clr-icon">in</span>
+            <span class="clr-text">thatanmolmishra</span>
+          </a>
+          <a href="https://instagram.com/thatanmolmishra" target="_blank" class="contact-link-row">
+            <span class="clr-icon">📸</span>
+            <span class="clr-text">thatanmolmishra</span>
+          </a>
+          <a href="https://github.com/thatanmolmishra" target="_blank" class="contact-link-row">
+            <span class="clr-icon">⌥</span>
+            <span class="clr-text">thatanmolmishra</span>
+          </a>
+          <a href="https://www.imdb.com/name/nm0000000/" target="_blank" class="contact-link-row">
+            <span class="clr-icon">🎬</span>
+            <span class="clr-text">Anmol Mishra</span>
+          </a>
+          <a href="https://twitter.com/thatanmolmishra" target="_blank" class="contact-link-row">
+            <span class="clr-icon">𝕏</span>
+            <span class="clr-text">thatanmolmishra</span>
+          </a>
+        </div>
+        <div class="contact-bottom-line">
+          <span>© 2025 Anmol Mishra</span>
+          <span>Built with Three.js</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll container -->
+  <div id="scroll-container"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>
