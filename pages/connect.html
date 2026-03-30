@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Connect — Anmol Mishra</title>
-  <meta name="description" content="Anmol Mishra's social profiles across LinkedIn, YouTube, Instagram, GitHub, IMDB, and more." />
+  <meta name="description" content="Anmol Mishra's social profiles — LinkedIn, YouTube, Instagram, GitHub, IMDB." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -13,129 +13,87 @@
   <style>
     .connect-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1.8rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
       padding: 0 0 4rem;
     }
-
     .profile-card {
       position: relative;
+      overflow: hidden;
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      background: var(--color-card);
-      padding: 2rem;
+      border-radius: 16px;
+      background: var(--color-card, rgba(255,255,255,0.03));
       text-decoration: none;
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
       cursor: pointer;
       transition: border-color 0.3s ease, transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease;
-      overflow: hidden;
     }
     .profile-card:hover {
       border-color: rgba(255,255,255,0.22);
-      transform: translateY(-6px);
-      box-shadow: 0 28px 60px rgba(0,0,0,0.55);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
     }
-    .profile-card::before {
-      content: '';
-      position: absolute; top: -40px; right: -40px;
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
-      pointer-events: none;
+    .profile-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      filter: grayscale(80%);
+      transition: filter 0.4s ease;
     }
-
-    .profile-header {
+    .profile-card:hover .profile-img { filter: grayscale(30%); }
+    .profile-body {
+      padding: 1.5rem;
       display: flex;
-      align-items: center;
-      gap: 1rem;
+      flex-direction: column;
+      gap: 0.8rem;
+      flex: 1;
     }
-
-    .profile-icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
-
-    .profile-name-block h3 {
-      font-size: 1.05rem;
+    .profile-body h3 {
+      font-size: 1rem;
       font-weight: 700;
       color: var(--white);
-      margin: 0 0 0.1rem;
     }
-
-    .profile-name-block .profile-handle {
+    .profile-handle {
       font-family: var(--font-mono);
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       color: var(--text-faint);
       letter-spacing: 0.06em;
     }
-
+    .profile-desc {
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: var(--text-dim);
+    }
     .profile-stats {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.2rem;
       flex-wrap: wrap;
     }
-
-    .stat-pill {
-      display: flex; flex-direction: column; gap: 0.15rem;
-    }
-    .stat-pill .sp-value {
-      font-size: 1.3rem;
+    .pstat-val {
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--white);
       line-height: 1;
     }
-    .stat-pill .sp-label {
+    .pstat-label {
       font-family: var(--font-mono);
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       color: var(--text-faint);
-      letter-spacing: 0.07em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-
-    .profile-bio {
-      font-size: 0.78rem;
-      line-height: 1.65;
-      color: var(--text-dim);
-    }
-
     .profile-cta {
       margin-top: auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.4);
-      padding: 0.6rem 1rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      transition: color 0.2s ease, border-color 0.2s ease;
-      text-decoration: none;
-      width: fit-content;
+      color: var(--text-faint);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1rem;
+      transition: color 0.2s;
     }
-    .profile-cta:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
-
-    .profile-card.featured-card {
-      grid-column: span 2;
-      flex-direction: row;
-      align-items: center;
-      gap: 2rem;
-    }
-    .profile-card.featured-card .profile-side {
-      flex: 1;
-    }
-
-    @media (max-width: 780px) {
-      .profile-card.featured-card { grid-column: span 1; flex-direction: column; }
-    }
+    .profile-card:hover .profile-cta { color: var(--white); }
   </style>
 </head>
 <body class="subpage-body">
@@ -149,119 +107,82 @@
   <div class="subpage-hero">
     <span class="section-tag">08 — Connect</span>
     <h1 class="subpage-title">Find Me<br/><em>Everywhere</em></h1>
-    <p class="subpage-sub">Across platforms — here's where I live online, what I create, and how to connect.</p>
+    <p class="subpage-sub">My profiles across platforms — where I create, connect, and lead.</p>
   </div>
 
   <div class="subpage-content">
     <div class="connect-grid">
 
-      <!-- LinkedIn -->
-      <a class="profile-card featured-card" href="https://www.linkedin.com/in/that-anmol-mishra/" target="_blank" rel="noopener">
-        <div class="profile-side">
-          <div class="profile-header">
-            <div class="profile-icon">💼</div>
-            <div class="profile-name-block">
-              <h3>LinkedIn</h3>
-              <div class="profile-handle">linkedin.com/in/that-anmol-mishra</div>
-            </div>
-          </div>
-          <p class="profile-bio">I share my journey in AI research, global leadership, and being a student at IIT Madras. My posts have reached over <strong>8.5 Lakh impressions</strong> in a single year. Active in the tech & leadership community.</p>
+      <a class="profile-card" href="https://www.linkedin.com/in/that-anmol-mishra/" target="_blank" rel="noopener">
+        <img class="profile-img" src="/img/achievements/guest speaker at cbse/1757354880048.jpeg" alt="LinkedIn" />
+        <div class="profile-body">
+          <h3>LinkedIn</h3>
+          <div class="profile-handle">linkedin.com/in/that-anmol-mishra</div>
           <div class="profile-stats">
-            <div class="stat-pill"><span class="sp-value">8.5L+</span><span class="sp-label">Impressions / year</span></div>
-            <div class="stat-pill"><span class="sp-value">10+</span><span class="sp-label">Recommendations</span></div>
+            <div><div class="pstat-val">8.5L+</div><div class="pstat-label">Impressions / Year</div></div>
+            <div><div class="pstat-val">10+</div><div class="pstat-label">Recommendations</div></div>
           </div>
+          <p class="profile-desc">AI research, global leadership, and being a student at IIT Madras. Posts have reached over 8.5 lakh impressions in a single year.</p>
+          <div class="profile-cta">View Profile ↗</div>
         </div>
-        <div class="profile-cta">View Profile ↗</div>
       </a>
 
-      <!-- YouTube -->
       <a class="profile-card" href="https://youtube.com/@anmolmishra" target="_blank" rel="noopener">
-        <div class="profile-header">
-          <div class="profile-icon">▶️</div>
-          <div class="profile-name-block">
-            <h3>YouTube</h3>
-            <div class="profile-handle">@anmolmishra</div>
+        <img class="profile-img" src="/img/media/med1.jpg" alt="YouTube" />
+        <div class="profile-body">
+          <h3>YouTube</h3>
+          <div class="profile-handle">@anmolmishra</div>
+          <div class="profile-stats">
+            <div><div class="pstat-val">6</div><div class="pstat-label">Podcast Episodes</div></div>
+            <div><div class="pstat-val">8</div><div class="pstat-label">Shorts</div></div>
           </div>
+          <p class="profile-desc">Long-form conversations with military generals, educators, and entrepreneurs — plus short film highlights from each episode.</p>
+          <div class="profile-cta">Watch Now ↗</div>
         </div>
-        <div class="profile-stats">
-          <div class="stat-pill"><span class="sp-value">6</span><span class="sp-label">Podcast Episodes</span></div>
-          <div class="stat-pill"><span class="sp-value">8</span><span class="sp-label">Shorts & Highlights</span></div>
-        </div>
-        <p class="profile-bio">I host long-form conversations with military generals, educators, and entrepreneurs — and produce short film-like highlights from each episode.</p>
-        <div class="profile-cta">Watch Now ↗</div>
       </a>
 
-      <!-- Instagram -->
       <a class="profile-card" href="https://www.instagram.com/thatanmolmishra" target="_blank" rel="noopener">
-        <div class="profile-header">
-          <div class="profile-icon">📸</div>
-          <div class="profile-name-block">
-            <h3>Instagram</h3>
-            <div class="profile-handle">@thatanmolmishra</div>
-          </div>
+        <img class="profile-img" src="/img/media/med2.jpg" alt="Instagram" />
+        <div class="profile-body">
+          <h3>Instagram</h3>
+          <div class="profile-handle">@thatanmolmishra</div>
+          <p class="profile-desc">Behind-the-scenes from Tokyo to Kharagpur, podcast recordings to global conferences. A visual journey of building something meaningful.</p>
+          <div class="profile-cta">Follow ↗</div>
         </div>
-        <p class="profile-bio">Behind-the-scenes from Tokyo to Kharagpur, podcast recordings to global conferences. A visual journey of building something meaningful.</p>
-        <div class="profile-cta">Follow ↗</div>
       </a>
 
-      <!-- GitHub -->
       <a class="profile-card" href="https://github.com/thatanmolmishra" target="_blank" rel="noopener">
-        <div class="profile-header">
-          <div class="profile-icon">⚡</div>
-          <div class="profile-name-block">
-            <h3>GitHub</h3>
-            <div class="profile-handle">github.com/thatanmolmishra</div>
+        <img class="profile-img" src="/img/global/glb1.jpg" alt="GitHub" />
+        <div class="profile-body">
+          <h3>GitHub</h3>
+          <div class="profile-handle">github.com/thatanmolmishra</div>
+          <div class="profile-stats">
+            <div><div class="pstat-val">Python</div><div class="pstat-label">Top Language</div></div>
+            <div><div class="pstat-val">React</div><div class="pstat-label">Frontend</div></div>
           </div>
+          <p class="profile-desc">AI research, React frontends, data science pipelines. Code from IIT KGP labs, IBM internships, product ventures.</p>
+          <div class="profile-cta">View Code ↗</div>
         </div>
-        <div class="profile-stats">
-          <div class="stat-pill"><span class="sp-value">Python</span><span class="sp-label">Top Language</span></div>
-          <div class="stat-pill"><span class="sp-value">React</span><span class="sp-label">Frontend</span></div>
-        </div>
-        <p class="profile-bio">AI research, React frontends, data science pipelines. Code from IIT KGP labs, IBM internships, product ventures, and personal experiments.</p>
-        <div class="profile-cta">View Code ↗</div>
       </a>
 
-      <!-- IMDB -->
       <a class="profile-card" href="https://www.imdb.com/name/nm18221555/" target="_blank" rel="noopener">
-        <div class="profile-header">
-          <div class="profile-icon">🎬</div>
-          <div class="profile-name-block">
-            <h3>IMDb</h3>
-            <div class="profile-handle">imdb.com/name/nm18221555</div>
-          </div>
+        <img class="profile-img" src="/img/media/med3.jpg" alt="IMDB" />
+        <div class="profile-body">
+          <h3>IMDb</h3>
+          <div class="profile-handle">imdb.com/name/nm18221555</div>
+          <p class="profile-desc">Listed on IMDb as an on-screen personality. Panelist on Sansad TV and other national media appearances.</p>
+          <div class="profile-cta">View Profile ↗</div>
         </div>
-        <p class="profile-bio">Listed on IMDb as an on-screen personality, with experience as a panelist on Sansad TV and other national media appearances.</p>
-        <div class="profile-cta">View Profile ↗</div>
       </a>
 
-      <!-- Sansad TV -->
       <a class="profile-card" href="https://www.youtube.com/watch?v=abexJ9IsNZU" target="_blank" rel="noopener">
-        <div class="profile-header">
-          <div class="profile-icon">📡</div>
-          <div class="profile-name-block">
-            <h3>Sansad TV</h3>
-            <div class="profile-handle">Youth Voice — Viksit Bharat</div>
-          </div>
+        <img class="profile-img" src="/img/media/celebs/1746687857809.jpeg" alt="Sansad TV" />
+        <div class="profile-body">
+          <h3>Sansad TV</h3>
+          <div class="profile-handle">Youth Voice — Viksit Bharat</div>
+          <p class="profile-desc">Featured as a youth voice on India's Parliamentary channel, discussing the role of youth in regional development.</p>
+          <div class="profile-cta">Watch Episode ↗</div>
         </div>
-        <p class="profile-bio">Featured as a youth voice on India's Parliamentary channel Sansad TV, discussing the role of youth in regional development and national infrastructure.</p>
-        <div class="profile-cta">Watch Episode ↗</div>
-      </a>
-
-      <!-- AWS / UN75 -->
-      <a class="profile-card" href="https://youtu.be/abexJ9IsNZU" target="_blank" rel="noopener">
-        <div class="profile-header">
-          <div class="profile-icon">🌐</div>
-          <div class="profile-name-block">
-            <h3>AWS × 1M1B / UN75 Panel</h3>
-            <div class="profile-handle">110K+ Live · 15M+ Impressions</div>
-          </div>
-        </div>
-        <div class="profile-stats">
-          <div class="stat-pill"><span class="sp-value">15M+</span><span class="sp-label">Digital Impressions</span></div>
-          <div class="stat-pill"><span class="sp-value">110K+</span><span class="sp-label">Live Viewers</span></div>
-        </div>
-        <p class="profile-bio">Featured as a youth panelist for the global SDG Coding session hosted by AWS and 1M1B. Discussed tech for social impact to one of the largest online audiences in education.</p>
-        <div class="profile-cta">View Session ↗</div>
       </a>
 
     </div>
@@ -272,7 +193,6 @@
       <span class="social-footer-label">Direct contact</span>
       <div class="social-links-row">
         <a href="mailto:byanmolmishra@gmail.com" class="social-link">byanmolmishra@gmail.com</a>
-        <a href="tel:+917876450959" class="social-link">+91 78764 50959</a>
       </div>
       <p class="social-footer-copy">© 2025 Anmol Mishra. All rights reserved.</p>
     </div>
@@ -281,16 +201,10 @@
   <script>
     const dot = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
-    let rx = 0, ry = 0;
-    window.addEventListener('mousemove', e => {
-      dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
-    });
-    (function animate() {
-      rx += (parseFloat(dot.style.left||0) - rx) * 0.12;
-      ry += (parseFloat(dot.style.top||0) - ry) * 0.12;
-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-      requestAnimationFrame(animate);
-    })();
+    let rx=0, ry=0;
+    window.addEventListener('mousemove', e => { dot.style.left=e.clientX+'px'; dot.style.top=e.clientY+'px'; });
+    (function animate(){ rx+=(parseFloat(dot.style.left||0)-rx)*0.12; ry+=(parseFloat(dot.style.top||0)-ry)*0.12;
+      ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animate); })();
     document.getElementById('back-btn').addEventListener('click', () => {
       const saved = sessionStorage.getItem('portfolioScroll');
       if (saved !== null) sessionStorage.setItem('restoreScroll', saved);

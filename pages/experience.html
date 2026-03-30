@@ -16,7 +16,7 @@
 
   <nav class="subpage-nav">
     <a href="/" class="nav-logo">AM</a>
-    <a href="/" class="nav-back">← Back to Portfolio</a>
+    <a href="javascript:history.back()" class="nav-back" id="back-btn">← Back to Portfolio</a>
   </nav>
 
   <div class="subpage-hero">
@@ -291,5 +291,12 @@
       <p class="social-footer-copy">© 2025 Anmol Mishra. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('back-btn').addEventListener('click', () => {
+      const saved = sessionStorage.getItem('portfolioScroll');
+      if (saved !== null) sessionStorage.setItem('restoreScroll', saved);
+    });
+  </script>
 </body>
 </html>

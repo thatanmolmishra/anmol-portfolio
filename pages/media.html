@@ -16,7 +16,7 @@
 
   <nav class="subpage-nav">
     <a href="/" class="nav-logo">AM</a>
-    <a href="/" class="nav-back">← Back to Portfolio</a>
+    <a href="javascript:history.back()" class="nav-back" id="back-btn">← Back to Portfolio</a>
   </nav>
 
   <div class="subpage-hero">
@@ -345,7 +345,7 @@
       <div class="ach-block-grid">
 
         <div class="ach-block-card featured">
-          <div class="ach-block-slider" data-images="["/img/media/newspapers/newspaper_1.jpg", "/img/media/newspapers/newspaper_2.jpg", "/img/media/newspapers/newspaper_3.jpg"]">
+          <div class="ach-block-slider" data-images='["/img/media/newspapers/newspaper_1.jpg", "/img/media/newspapers/newspaper_2.jpg", "/img/media/newspapers/newspaper_3.jpg"]'>
             <img class="ach-slide-img" src="/img/media/newspapers/newspaper_1.jpg" alt="Newspaper Feature 1" />
             <button class="ach-slide-btn ach-slide-prev" aria-label="Previous">&#8592;</button>
             <button class="ach-slide-btn ach-slide-next" aria-label="Next">&#8594;</button>
@@ -661,5 +661,12 @@
       <p class="social-footer-copy">© 2025 Anmol Mishra. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('back-btn').addEventListener('click', () => {
+      const saved = sessionStorage.getItem('portfolioScroll');
+      if (saved !== null) sessionStorage.setItem('restoreScroll', saved);
+    });
+  </script>
 </body>
 </html>

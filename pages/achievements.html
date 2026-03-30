@@ -16,7 +16,7 @@
 
   <nav class="subpage-nav">
     <a href="/" class="nav-logo">AM</a>
-    <a href="/" class="nav-back">← Back to Portfolio</a>
+    <a href="javascript:history.back()" class="nav-back" id="back-btn">← Back to Portfolio</a>
   </nav>
 
   <div class="subpage-hero">
@@ -317,6 +317,13 @@
       prevBtn.addEventListener('click', () => { cur = (cur - 1 + images.length) % images.length; update(); });
       nextBtn.addEventListener('click', () => { cur = (cur + 1) % images.length; update(); });
       if (images.length <= 1) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; }
+    });
+  </script>
+
+  <script>
+    document.getElementById('back-btn').addEventListener('click', () => {
+      const saved = sessionStorage.getItem('portfolioScroll');
+      if (saved !== null) sessionStorage.setItem('restoreScroll', saved);
     });
   </script>
 </body>

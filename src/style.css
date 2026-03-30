@@ -161,7 +161,7 @@ body.light-theme .theme-toggle:hover {
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; }
 body {
-  background: var(--black);
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   overflow-x: hidden;
