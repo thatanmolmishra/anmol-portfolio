@@ -84,6 +84,18 @@ const tick = (time) => {
   rafId = requestAnimationFrame(tick);
 };
 
+// ===== SCROLL MEMORY — save position as user scrolls =====
+lenis.on('scroll', ({ scroll }) => {
+  sessionStorage.setItem('portfolioScroll', scroll);
+});
+
+// Save scroll position on any subpage navigation link click
+document.querySelectorAll('a[href^="/pages/"]').forEach(link => {
+  link.addEventListener('click', () => {
+    sessionStorage.setItem('portfolioScroll', lenis.scroll);
+  });
+});
+
 // ===== INIT =====
 async function init() {
   loader.setProgress(0.9, 'Almost ready...');
@@ -93,6 +105,16 @@ async function init() {
   overlay.update(0);
   nav.update(0);
   initBlockModal();
+
+  // ===== RESTORE SCROLL after subpage visit =====
+  const restore = sessionStorage.getItem('restoreScroll');
+  if (restore !== null) {
+    sessionStorage.removeItem('restoreScroll');
+    // Small delay so Lenis is ready
+    setTimeout(() => {
+      lenis.scrollTo(parseFloat(restore), { immediate: true });
+    }, 100);
+  }
 
   requestAnimationFrame(tick);
 }

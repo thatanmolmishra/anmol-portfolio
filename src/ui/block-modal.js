@@ -47,14 +47,28 @@ export function initBlockModal() {
   };
 
   // Selectors for blocks that should be zoomable
-  const selectors = '.ach-block-card, .yt-card, .news-card, .celeb-card, .cert-card';
+  // yt-card has data-no-modal so clicking the video thumb won't trigger modal
+  // yt-body-modal is the text section below each video that WILL trigger modal
+  const cardSelectors = '.ach-block-card, .news-card, .celeb-card, .cert-card';
+  const bodySelectors = '.yt-body-modal';
   
   document.addEventListener('click', (e) => {
-    const target = e.target.closest(selectors);
-    if (target && !backdrop.contains(target)) {
-      // Don't open if clicking a specific "view more" link unless intended
-      // But the user wants the whole block, so let's just go for it.
-      openModal(target);
+    // Check if inside the modal itself
+    if (backdrop.contains(e.target)) return;
+
+    // Check for card-level trigger (not yt-card which has data-no-modal)
+    const cardTarget = e.target.closest(cardSelectors);
+    if (cardTarget && !cardTarget.dataset.noModal) {
+      openModal(cardTarget);
+      return;
+    }
+
+    // Check for the yt text body trigger
+    const bodyTarget = e.target.closest(bodySelectors);
+    if (bodyTarget) {
+      const ytCard = bodyTarget.closest('.yt-card');
+      if (ytCard) { openModal(ytCard); }
+      return;
     }
   });
 

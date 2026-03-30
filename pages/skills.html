@@ -4,134 +4,373 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skills — Anmol Mishra</title>
-  <meta name="description" content="Technical and soft skills of Anmol Mishra." />
+  <meta name="description" content="Tech stack and skills of Anmol Mishra — visualised as an interactive 3D bubble universe." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/src/style.css" />
   <link rel="stylesheet" href="/src/subpage.css" />
+  <style>
+    body { overflow: hidden; }
+    .subpage-body { overflow: hidden; height: 100vh; }
+
+    #bubble-canvas {
+      position: fixed; inset: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+    }
+
+    .skills-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem 4rem;
+    }
+
+    .skills-hero-text {
+      pointer-events: none;
+    }
+
+    .skills-hero-text .section-tag {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .skills-hero-text h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .skills-hero-text p {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      max-width: 380px;
+    }
+
+    .skills-hint {
+      position: fixed;
+      top: 50%;
+      right: 3rem;
+      transform: translateY(-50%);
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.1em;
+      color: var(--text-faint);
+      writing-mode: vertical-rl;
+      pointer-events: none;
+    }
+
+    #skill-tooltip {
+      position: fixed;
+      padding: 0.6rem 1.1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--white);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 200;
+      max-width: 200px;
+    }
+    #skill-tooltip.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #skill-tooltip .tip-name {
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 0.2rem;
+      color: var(--white);
+    }
+    #skill-tooltip .tip-cat {
+      color: var(--text-dim);
+      font-size: 0.62rem;
+      margin-bottom: 0.3rem;
+    }
+    #skill-tooltip .tip-bar-wrap {
+      width: 100%;
+      height: 2px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    #skill-tooltip .tip-bar {
+      height: 100%;
+      background: var(--white);
+      border-radius: 2px;
+    }
+  </style>
 </head>
 <body class="subpage-body">
   <div id="cursor"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
 
-  <nav class="subpage-nav">
+  <nav class="subpage-nav" style="position:fixed; z-index: 100;">
     <a href="/" class="nav-logo">AM</a>
-    <a href="/" class="nav-back">← Back to Portfolio</a>
+    <a href="javascript:history.back()" class="nav-back" id="back-btn">← Back to Portfolio</a>
   </nav>
 
-  <div class="subpage-hero">
-    <span class="section-tag">03 — Skills</span>
-    <h1 class="subpage-title">Full<br/><em>Toolkit</em></h1>
-    <p class="subpage-sub">Languages, frameworks, tools, and methodologies I work with.</p>
-  </div>
+  <canvas id="bubble-canvas"></canvas>
 
-  <div class="subpage-content">
-    <div class="skills-full-grid">
-
-      <div class="skill-full-section">
-        <div class="sfs-header">
-          <span class="sfs-icon">⌨</span>
-          <h2>Programming Languages</h2>
-        </div>
-        <div class="skill-bars">
-          <div class="skill-bar-item"><span class="sb-name">Python</span><div class="sb-track"><div class="sb-fill" style="width:90%; background: #64c8ff;"></div></div><span class="sb-level">Advanced</span></div>
-          <div class="skill-bar-item"><span class="sb-name">JavaScript</span><div class="sb-track"><div class="sb-fill" style="width:85%; background: #fbbf24;"></div></div><span class="sb-level">Advanced</span></div>
-          <div class="skill-bar-item"><span class="sb-name">C / C++</span><div class="sb-track"><div class="sb-fill" style="width:75%; background: #a78bfa;"></div></div><span class="sb-level">Proficient</span></div>
-          <div class="skill-bar-item"><span class="sb-name">Java</span><div class="sb-track"><div class="sb-fill" style="width:70%; background: #f472b6;"></div></div><span class="sb-level">Proficient</span></div>
-          <div class="skill-bar-item"><span class="sb-name">SQL</span><div class="sb-track"><div class="sb-fill" style="width:80%; background: #34d399;"></div></div><span class="sb-level">Advanced</span></div>
-          <div class="skill-bar-item"><span class="sb-name">HTML / CSS</span><div class="sb-track"><div class="sb-fill" style="width:88%; background: #64c8ff;"></div></div><span class="sb-level">Advanced</span></div>
-        </div>
-      </div>
-
-      <div class="skill-full-section">
-        <div class="sfs-header">
-          <span class="sfs-icon">⚛</span>
-          <h2>Frameworks & Libraries</h2>
-        </div>
-        <div class="skill-tags-large">
-          <span class="stl">React.js</span>
-          <span class="stl">Three.js</span>
-          <span class="stl">GSAP</span>
-          <span class="stl">Node.js</span>
-          <span class="stl">Lenis</span>
-          <span class="stl">Vite</span>
-        </div>
-      </div>
-
-      <div class="skill-full-section">
-        <div class="sfs-header">
-          <span class="sfs-icon">🧠</span>
-          <h2>AI / Machine Learning</h2>
-        </div>
-        <div class="skill-tags-large">
-          <span class="stl ai">Computer Vision</span>
-          <span class="stl ai">Natural Language Processing</span>
-          <span class="stl ai">Data Science</span>
-          <span class="stl ai">Big Data Analytics</span>
-          <span class="stl ai">Multimodal AI</span>
-          <span class="stl ai">Video Understanding</span>
-        </div>
-      </div>
-
-      <div class="skill-full-section">
-        <div class="sfs-header">
-          <span class="sfs-icon">🛠</span>
-          <h2>Developer Tools</h2>
-        </div>
-        <div class="skill-tags-large">
-          <span class="stl">VS Code</span>
-          <span class="stl">Google Colab</span>
-          <span class="stl">IBM Cloud</span>
-          <span class="stl">Git / GitHub</span>
-          <span class="stl">Figma</span>
-        </div>
-      </div>
-
-      <div class="skill-full-section">
-        <div class="sfs-header">
-          <span class="sfs-icon">💼</span>
-          <h2>Product & Strategy</h2>
-        </div>
-        <div class="skill-tags-large">
-          <span class="stl product">SWOT Analysis</span>
-          <span class="stl product">Go-to-Market Strategy</span>
-          <span class="stl product">Wireframing & Prototyping</span>
-          <span class="stl product">Market Research</span>
-          <span class="stl product">Data Analytics</span>
-          <span class="stl product">Product Roadmapping</span>
-        </div>
-      </div>
-
-      <div class="skill-full-section">
-        <div class="sfs-header">
-          <span class="sfs-icon">🌍</span>
-          <h2>Languages</h2>
-        </div>
-        <div class="language-cards">
-          <div class="lang-card"><div class="lang-flag">🇬🇧</div><div class="lang-name">English</div><div class="lang-level">Fluent</div></div>
-          <div class="lang-card"><div class="lang-flag">🇮🇳</div><div class="lang-name">Hindi</div><div class="lang-level">Native</div></div>
-          <div class="lang-card"><div class="lang-flag">🇩🇪</div><div class="lang-name">German</div><div class="lang-level">Basic</div></div>
-        </div>
-      </div>
-
+  <div class="skills-overlay">
+    <div class="skills-hero-text">
+      <span class="section-tag">03 — Skills</span>
+      <h1>Tech <em>Universe</em></h1>
+      <p>Hover over a bubble. Drag to rotate. Scroll to zoom.</p>
     </div>
   </div>
 
+  <div class="skills-hint">HOVER · DRAG · EXPLORE</div>
+
+  <div id="skill-tooltip">
+    <div class="tip-name" id="tip-name">Python</div>
+    <div class="tip-cat" id="tip-cat">Language</div>
+    <div class="tip-bar-wrap"><div class="tip-bar" id="tip-bar" style="width:90%"></div></div>
+  </div>
+
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+
+    const skills = [
+      { name: 'Python',        cat: 'Language',    level: 92, r: 2.8 },
+      { name: 'JavaScript',    cat: 'Language',    level: 85, r: 2.5 },
+      { name: 'React.js',      cat: 'Framework',   level: 80, r: 2.4 },
+      { name: 'C / C++',       cat: 'Language',    level: 75, r: 2.2 },
+      { name: 'SQL',           cat: 'Database',    level: 82, r: 2.3 },
+      { name: 'HTML / CSS',    cat: 'Frontend',    level: 88, r: 2.4 },
+      { name: 'Java',          cat: 'Language',    level: 70, r: 2.0 },
+      { name: 'NLP',           cat: 'AI / ML',     level: 80, r: 2.3 },
+      { name: 'Computer Vision', cat: 'AI / ML',  level: 78, r: 2.2 },
+      { name: 'Multimodal AI', cat: 'Research',    level: 75, r: 2.1 },
+      { name: 'Data Science',  cat: 'Analytics',   level: 85, r: 2.4 },
+      { name: 'Three.js',      cat: 'Framework',   level: 72, r: 2.0 },
+      { name: 'Node.js',       cat: 'Backend',     level: 70, r: 2.0 },
+      { name: 'Git',           cat: 'Tool',        level: 88, r: 2.2 },
+      { name: 'IBM Cloud',     cat: 'Cloud',       level: 68, r: 1.8 },
+      { name: 'Big Data',      cat: 'Analytics',   level: 72, r: 2.0 },
+      { name: 'Google Colab',  cat: 'Tool',        level: 85, r: 2.1 },
+      { name: 'DBMS',          cat: 'Database',    level: 80, r: 2.1 },
+      { name: 'English',       cat: 'Language 🌍', level: 98, r: 1.7 },
+      { name: 'German (Basic)',cat: 'Language 🌍', level: 45, r: 1.5 },
+    ];
+
+    const canvas = document.getElementById('bubble-canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const scene  = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 200);
+    camera.position.set(0, 0, 28);
+
+    const ambLight = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambLight);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    dirLight.position.set(5, 10, 15);
+    scene.add(dirLight);
+    const pointLight = new THREE.PointLight(0x88aaff, 0.6, 60);
+    pointLight.position.set(-10, 8, 10);
+    scene.add(pointLight);
+
+    // Create bubbles
+    const bubbles = [];
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    let hoveredBubble = null;
+
+    // Fibonacci sphere distribution for even spread
+    const phi = Math.PI * (3 - Math.sqrt(5));
+    skills.forEach((sk, i) => {
+      const y = 1 - (i / (skills.length - 1)) * 2;
+      const radius = Math.sqrt(1 - y * y);
+      const theta  = phi * i;
+      const spread = 12;
+      const x = Math.cos(theta) * radius * spread;
+      const z = Math.sin(theta) * radius * spread;
+      const yPos = y * spread * 0.6;
+
+      const geo = new THREE.SphereGeometry(sk.r, 32, 32);
+      const mat = new THREE.MeshPhysicalMaterial({
+        color: 0xffffff,
+        roughness: 0.05,
+        metalness: 0.05,
+        transmission: 0.85,
+        thickness: 1.2,
+        transparent: true,
+        opacity: 0.55,
+        side: THREE.FrontSide,
+        envMapIntensity: 0.5,
+      });
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.position.set(x, yPos, z);
+      mesh.userData.skill = sk;
+      mesh.userData.baseScale = 1;
+      mesh.userData.targetScale = 1;
+      mesh.userData.basePos = new THREE.Vector3(x, yPos, z);
+      mesh.userData.phase = Math.random() * Math.PI * 2;
+      mesh.userData.speed = 0.3 + Math.random() * 0.4;
+
+      // Text label via sprite
+      const label = makeLabel(sk.name, sk.r);
+      mesh.add(label);
+
+      scene.add(mesh);
+      bubbles.push(mesh);
+    });
+
+    function makeLabel(text, bubbleR) {
+      const c2 = document.createElement('canvas');
+      c2.width = 256; c2.height = 64;
+      const ctx2 = c2.getContext('2d');
+      ctx2.clearRect(0, 0, 256, 64);
+      ctx2.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx2.font = 'bold 22px Space Grotesk, sans-serif';
+      ctx2.textAlign = 'center';
+      ctx2.textBaseline = 'middle';
+      ctx2.fillText(text, 128, 32);
+      const tex = new THREE.CanvasTexture(c2);
+      const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false });
+      const sprite = new THREE.Sprite(mat);
+      const aspect = 256 / 64;
+      sprite.scale.set(bubbleR * aspect * 0.7, bubbleR * 0.7, 1);
+      return sprite;
+    }
+
+    // Tooltip
+    const tooltip    = document.getElementById('skill-tooltip');
+    const tipName    = document.getElementById('tip-name');
+    const tipCat     = document.getElementById('tip-cat');
+    const tipBar     = document.getElementById('tip-bar');
+
+    function showTooltip(sk, x, y) {
+      tipName.textContent = sk.name;
+      tipCat.textContent  = sk.cat;
+      tipBar.style.width  = sk.level + '%';
+      tooltip.style.left  = (x + 20) + 'px';
+      tooltip.style.top   = (y - 10) + 'px';
+      tooltip.classList.add('visible');
+    }
+
+    function hideTooltip() {
+      tooltip.classList.remove('visible');
+    }
+
+    // Drag rotation
+    let isDragging = false, prevDrag = { x: 0, y: 0 };
+    const group = new THREE.Group();
+    bubbles.forEach(b => { scene.remove(b); group.add(b); });
+    scene.add(group);
+    let autoRotX = 0, autoRotY = 0;
+    let velX = 0, velY = 0;
+
+    canvas.addEventListener('mousedown', e => { isDragging = true; prevDrag = { x: e.clientX, y: e.clientY }; velX = 0; velY = 0; });
+    window.addEventListener('mouseup',   () => { isDragging = false; });
+    window.addEventListener('mousemove', e => {
+      mouse.set((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1);
+      if (isDragging) {
+        const dx = e.clientX - prevDrag.x;
+        const dy = e.clientY - prevDrag.y;
+        velY += dx * 0.005;
+        velX += dy * 0.005;
+        prevDrag = { x: e.clientX, y: e.clientY };
+      }
+    });
+
+    canvas.addEventListener('mousemove', e => {
+      raycaster.setFromCamera(mouse, camera);
+      const hits = raycaster.intersectObjects(group.children, false);
+      if (hits.length > 0 && hits[0].object.userData.skill) {
+        const b = hits[0].object;
+        document.body.style.cursor = 'pointer';
+        if (hoveredBubble !== b) {
+          if (hoveredBubble) hoveredBubble.userData.targetScale = 1;
+          hoveredBubble = b;
+          b.userData.targetScale = 1.35;
+          showTooltip(b.userData.skill, e.clientX, e.clientY);
+        }
+      } else {
+        document.body.style.cursor = 'default';
+        if (hoveredBubble) {
+          hoveredBubble.userData.targetScale = 1;
+          hoveredBubble = null;
+        }
+        hideTooltip();
+      }
+    });
+
+    // Clock
+    const clock = new THREE.Clock();
+    function animate() {
+      const t = clock.getElapsedTime();
+      // Auto-slow rotation
+      if (!isDragging) {
+        autoRotY += 0.0012;
+        autoRotX  = Math.sin(t * 0.08) * 0.08;
+      }
+      velX *= 0.93;
+      velY *= 0.93;
+      autoRotX += velX;
+      autoRotY += velY;
+      group.rotation.x = autoRotX;
+      group.rotation.y = autoRotY;
+
+      // Float each bubble individually
+      group.children.forEach(b => {
+        b.position.y = b.userData.basePos.y + Math.sin(t * b.userData.speed + b.userData.phase) * 0.35;
+        // Smooth scale towards target
+        const cur = b.scale.x;
+        const tgt = b.userData.targetScale;
+        b.scale.setScalar(cur + (tgt - cur) * 0.12);
+      });
+
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
   <script>
+    // Cursor
     const dot = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
     let rx = 0, ry = 0;
     window.addEventListener('mousemove', e => {
-      dot.style.left = e.clientX + 'px';
-      dot.style.top = e.clientY + 'px';
+      dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
     });
     (function animate() {
       rx += (parseFloat(dot.style.left||0) - rx) * 0.12;
       ry += (parseFloat(dot.style.top||0) - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
       requestAnimationFrame(animate);
     })();
+
+    // Scroll position restore
+    document.getElementById('back-btn').addEventListener('click', e => {
+      const saved = sessionStorage.getItem('portfolioScroll');
+      if (saved !== null) {
+        sessionStorage.setItem('restoreScroll', saved);
+      }
+    });
   </script>
 </body>
 </html>
