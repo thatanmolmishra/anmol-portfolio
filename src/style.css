@@ -47,6 +47,116 @@
   --z-loader:  200;
 }
 
+/* ============ DESERT LIGHT THEME ============ */
+/* Activated by adding class 'light-theme' to <body> */
+body.light-theme {
+  --black:        #2D1A0E;
+  --off-black:    #3D2510;
+  --charcoal-deep:#5C3A1E;
+  --charcoal:     #8B5E3C;
+  --charcoal-mid: #C4A882;
+  --charcoal-light:#D9C7A3;
+  --grey-dark:    #A07850;
+  --grey-mid:     #C4A882;
+  --grey:         #D9C7A3;
+  --grey-light:   #E8DFC0;
+  --mist:         #F0E8D0;
+  --off-white:    #F5EED8;
+  --white:        #2D1A0E;
+
+  --bg:           #F5EED8;
+  --surface:      rgba(0,0,0,0.04);
+  --surface-2:    rgba(0,0,0,0.07);
+  --border:       rgba(0,0,0,0.09);
+  --border-hi:    rgba(0,0,0,0.2);
+
+  --text:         #2D1A0E;
+  --text-mid:     #5C3A1E;
+  --text-dim:     #8B5E3C;
+  --text-faint:   #C4A882;
+  --text-ghost:   rgba(45,26,14,0.25);
+
+  --glow-white:   0 0 30px rgba(139,94,60,0.12);
+
+  background: #F5EED8 !important;
+  color: #2D1A0E !important;
+}
+
+body.light-theme #canvas {
+  filter: sepia(0.8) saturate(0.5) brightness(1.1);
+}
+
+body.light-theme nav,
+body.light-theme .subpage-nav { border-bottom: 1px solid rgba(45,26,14,0.12); }
+body.light-theme .nav-logo,
+body.light-theme .subpage-nav a { color: #2D1A0E; }
+body.light-theme .media-tab-btn { color: #8B5E3C; border-color: rgba(45,26,14,0.15); }
+body.light-theme .media-tab-btn.active { color: #2D1A0E; border-color: #2D1A0E; }
+body.light-theme .ach-block-card { background: #F0E8D0; border-color: rgba(45,26,14,0.12); }
+body.light-theme .ach-block-body h3 { color: #2D1A0E; }
+body.light-theme .ach-block-body p { color: #8B5E3C; }
+body.light-theme .ach-block-badge { background: rgba(45,26,14,0.06); color: #5C3A1E; border-color: rgba(45,26,14,0.15); }
+body.light-theme .ach-full-tags span { background: rgba(45,26,14,0.06); color: #5C3A1E; border-color: rgba(45,26,14,0.15); }
+body.light-theme .hero-name,
+body.light-theme .section-title,
+body.light-theme .subpage-title { color: #2D1A0E; }
+body.light-theme .hero-eyebrow,
+body.light-theme .about-bio-text { color: #5C3A1E; }
+body.light-theme #loader { background: #F5EED8; }
+body.light-theme .loader-logo { color: #2D1A0E; }
+body.light-theme .loader-bar-wrap { background: rgba(45,26,14,0.12); }
+body.light-theme .loader-bar { background: #2D1A0E; }
+body.light-theme .zone-overlay { color: #2D1A0E; }
+body.light-theme #zone-nav { background: rgba(245,238,216,0.75); }
+body.light-theme #zone-nav li .dot { border-color: rgba(45,26,14,0.3); }
+body.light-theme #zone-nav li.active .dot { background: #2D1A0E; }
+body.light-theme #progress-bar { background: rgba(45,26,14,0.12); }
+body.light-theme #progress-fill { background: linear-gradient(to bottom, #8B5E3C, #2D1A0E); }
+body.light-theme #zone-label { background: rgba(245,238,216,0.7); color: #2D1A0E; }
+body.light-theme .view-more-btn { color: #2D1A0E; border-color: rgba(45,26,14,0.3); }
+body.light-theme .view-more-btn:hover { background: #2D1A0E; color: #F5EED8; }
+body.light-theme .btn-primary { background: #2D1A0E; color: #F5EED8; }
+body.light-theme .btn-ghost { color: #2D1A0E; border-color: rgba(45,26,14,0.4); }
+body.light-theme #cursor-dot { background: #2D1A0E; }
+body.light-theme #cursor-ring { border-color: #2D1A0E; }
+body.light-theme .subpage-hero, body.light-theme .section-tag { color: #2D1A0E; }
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  z-index: 150;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s var(--ease-spring);
+  user-select: none;
+}
+.theme-toggle:hover {
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.1);
+}
+body.light-theme .theme-toggle {
+  border-color: rgba(45,26,14,0.25);
+  background: rgba(45,26,14,0.06);
+}
+body.light-theme .theme-toggle:hover {
+  border-color: rgba(45,26,14,0.5);
+  background: rgba(45,26,14,0.1);
+}
+
+
+
 /* ============ RESET ============ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; }

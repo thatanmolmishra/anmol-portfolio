@@ -468,6 +468,21 @@
   <!-- Scroll container -->
   <div id="scroll-container"></div>
 
+  <!-- ===== THEME TOGGLE ===== -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark theme">🌙</button>
+
   <script type="module" src="/src/main.js"></script>
+  <script>
+    // Theme toggle logic
+    const btn = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('portfolio-theme');
+    if (saved === 'light') { document.body.classList.add('light-theme'); btn.textContent = '☀️'; }
+
+    btn.addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light-theme');
+      btn.textContent = isLight ? '☀️' : '🌙';
+      localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+    });
+  </script>
 </body>
 </html>

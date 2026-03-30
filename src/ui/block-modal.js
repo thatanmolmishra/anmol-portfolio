@@ -46,29 +46,18 @@ export function initBlockModal() {
     content.innerHTML = '';
   };
 
-  // Selectors for blocks that should be zoomable
-  // yt-card has data-no-modal so clicking the video thumb won't trigger modal
-  // yt-body-modal is the text section below each video that WILL trigger modal
-  const cardSelectors = '.ach-block-card, .news-card, .celeb-card, .cert-card';
-  const bodySelectors = '.yt-body-modal';
-  
   document.addEventListener('click', (e) => {
-    // Check if inside the modal itself
     if (backdrop.contains(e.target)) return;
-
-    // Check for card-level trigger (not yt-card which has data-no-modal)
-    const cardTarget = e.target.closest(cardSelectors);
-    if (cardTarget && !cardTarget.dataset.noModal) {
-      openModal(cardTarget);
-      return;
-    }
-
-    // Check for the yt text body trigger
-    const bodyTarget = e.target.closest(bodySelectors);
-    if (bodyTarget) {
-      const ytCard = bodyTarget.closest('.yt-card');
-      if (ytCard) { openModal(ytCard); }
-      return;
+    // Never intercept clicks on the play overlay itself — those play the video
+    if (e.target.closest('.yt-play-overlay') || e.target.closest('.yt-embed-frame')) return;
+    // Card-level modal trigger
+    const card = e.target.closest('.ach-block-card, .news-card, .celeb-card, .cert-card');
+    if (card) { openModal(card); return; }
+    // yt-body-modal = only the text area below a yt card triggers modal
+    const body = e.target.closest('.yt-body-modal');
+    if (body) {
+      const ytCard = body.closest('.yt-card');
+      if (ytCard) openModal(ytCard);
     }
   });
 
