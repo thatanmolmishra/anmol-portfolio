@@ -27,11 +27,15 @@
 
   <div class="subpage-content">
 
-    <!-- EU & Europe -->
-    <div class="ach-category">
-      <div class="ach-cat-header">
-        <h2 class="ach-cat-title">Europe & Erasmus+</h2>
-      </div>
+    
+    <!-- Tab Bar -->
+    <div class="media-tab-bar" role="tablist" style="margin-bottom: 2.5rem; flex-wrap: wrap;">
+      <button class="media-tab-btn active" data-tab="europe" role="tab" aria-selected="true">Europe & Erasmus+</button>
+      <button class="media-tab-btn" data-tab="asia" role="tab" aria-selected="false">Asia & Global Conferences</button>
+    </div>
+<!-- EUROPE TAB -->
+    <div id="tab-europe" class="media-tab-panel active">
+      
       <div class="ach-block-grid">
 
         <div class="ach-block-card featured">
@@ -66,11 +70,9 @@
       </div>
     </div>
 
-    <!-- Asia -->
-    <div class="ach-category">
-      <div class="ach-cat-header">
-        <h2 class="ach-cat-title">Asia & Global Conferences</h2>
-      </div>
+    <!-- ASIA TAB -->
+    <div id="tab-asia" class="media-tab-panel">
+      
       <div class="ach-block-grid">
 
         <div class="ach-block-card featured">
@@ -132,6 +134,23 @@
     </div>
 
   </div>
+
+  
+  <!-- Scripts -->
+  <script>
+    document.querySelectorAll('.media-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.media-tab-btn').forEach(b => { 
+          b.classList.remove('active'); 
+          b.setAttribute('aria-selected','false'); 
+        });
+        document.querySelectorAll('.media-tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected','true');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 
   <script>
     const dot = document.getElementById('cursor-dot');

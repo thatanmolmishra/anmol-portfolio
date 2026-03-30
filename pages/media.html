@@ -342,7 +342,7 @@
 
     <!-- NEWSPAPERS TAB -->
     <div id="tab-newspapers" class="media-tab-panel">
-      <div class="news-grid">
+      <div class="news-grid" style="padding: 2rem 0; gap: 2rem;">
 
         <div class="news-card">
           <img src="/img/media/newspapers/newspaper_1.jpg" alt="Newspaper feature" class="news-img" />
@@ -901,6 +901,10 @@
 
   </div><!-- /subpage-content -->
 
+    <script type="module">
+    import { initBlockModal } from '/src/ui/block-modal.js';
+    initBlockModal();
+  </script>
   <script>
     // Cursor
     const dot = document.getElementById('cursor-dot');
