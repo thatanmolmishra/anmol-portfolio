@@ -13,11 +13,13 @@ import { Zone3Skills } from './zones/zone3-skills.js';
 import { Zone4Achievements } from './zones/zone4-achievements.js';
 import { Zone5Projects } from './zones/zone5-projects.js';
 import { Zone6Global } from './zones/zone6-global.js';
-import { Zone7Contact } from './zones/zone7-contact.js';
+import { Zone7Media } from './zones/zone7-media.js';
+import { Zone8Contact } from './zones/zone8-contact.js';
 import { Cursor } from './ui/cursor.js';
 import { Nav } from './ui/nav.js';
 import { Overlay } from './ui/overlay.js';
 import { Loader } from './ui/loader.js';
+import { initBlockModal } from './ui/block-modal.js';
 
 // ===== LOADER =====
 const loader = new Loader();
@@ -36,7 +38,8 @@ const zones = [
   new Zone4Achievements(world.scene),
   new Zone5Projects(world.scene),
   new Zone6Global(world.scene),
-  new Zone7Contact(world.scene),
+  new Zone7Media(world.scene),
+  new Zone8Contact(world.scene),
 ];
 zones.forEach(z => world.addZone(z));
 loader.setProgress(0.7, 'Lighting up the universe...');
@@ -45,10 +48,10 @@ loader.setProgress(0.7, 'Lighting up the universe...');
 const cursor = new Cursor();
 
 // ===== NAV =====
-const nav = new Nav(8);
+const nav = new Nav(9);
 
 // ===== OVERLAYS =====
-const overlay = new Overlay(8);
+const overlay = new Overlay(9);
 
 // ===== LENIS SMOOTH SCROLL =====
 const lenis = new Lenis({
@@ -89,6 +92,7 @@ async function init() {
   // Show first overlay
   overlay.update(0);
   nav.update(0);
+  initBlockModal();
 
   requestAnimationFrame(tick);
 }

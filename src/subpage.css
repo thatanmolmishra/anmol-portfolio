@@ -368,7 +368,7 @@
 /* ============ BLOCK CARD + IMAGE SLIDER (Achievements & Global) ============ */
 .ach-block-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -504,8 +504,8 @@
 }
 .media-tab-btn:hover { color: var(--text); }
 .media-tab-btn.active {
-  background: var(--accent);
-  color: #000;
+  background: var(--white);
+  color: var(--black);
   font-weight: 700;
 }
 .media-tab-panel { display: none; }
@@ -544,9 +544,8 @@
 }
 .yt-shorts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
-  justify-items: center;
 }
 .yt-card {
   background: var(--surface);
@@ -611,8 +610,9 @@
 /* ============ NEWSPAPERS ============ */
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  margin-bottom: 3rem;
 }
 .news-card {
   background: var(--surface);
@@ -622,7 +622,7 @@
   transition: all 0.3s var(--ease-out);
 }
 .news-card:hover { border-color: var(--text-dim); transform: translateY(-3px); }
-.news-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.news-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; border-bottom: 1px solid var(--border); }
 .news-card-body { padding: 1.1rem 1.25rem 1.25rem; }
 .news-badge {
   font-family: var(--font-mono);
@@ -643,7 +643,7 @@
 /* ============ CELEBS ============ */
 .celeb-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 .celeb-card {
@@ -661,8 +661,41 @@
 .celeb-caption h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; }
 .celeb-caption span { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-faint); }
 
+/* ============ CERTIFICATES ============ */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.cert-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: all 0.3s var(--ease-out);
+}
+.cert-card:hover { border-color: var(--white); transform: translateY(-3px); }
+.cert-card iframe, .cert-card img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.cert-card.pdf iframe {
+  pointer-events: none;
+}
 
+
+
+@media (max-width: 900px) {
+  .ach-block-grid, .yt-grid, .news-grid, .celeb-grid, .proj-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 700px) {
+  .subpage-content { padding: 0 6vw; }
   .media-grid { grid-template-columns: 1fr; }
   .media-card.featured { grid-column: span 1; }
   .media-stat-bar { flex-wrap: wrap; }
@@ -672,6 +705,8 @@
   .yt-shorts-grid { grid-template-columns: 1fr 1fr; }
   .news-grid { grid-template-columns: 1fr; }
   .celeb-grid { grid-template-columns: 1fr 1fr; }
+  .proj-grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr; }
   .media-tab-bar { width: 100%; justify-content: space-between; }
   .media-tab-btn { padding: 7px 12px; font-size: 0.6rem; }
 }
@@ -732,3 +767,29 @@
   color: var(--text-faint);
   text-align: center;
 }
+
+/* ============ CV BUTTON ============ */
+.cv-btn-wrap {
+  margin-top: 1.5rem;
+  display: flex;
+}
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--white);
+  padding: 12px 24px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+.cv-btn:hover {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+

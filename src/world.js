@@ -24,7 +24,8 @@ export class World {
       new THREE.Vector3(-5, -5, -40),    // Zone 4: Achievements
       new THREE.Vector3(12, 3, -70),     // Zone 5: Projects
       new THREE.Vector3(-8, 6, -100),    // Zone 6: Global
-      new THREE.Vector3(0, 0, -130),     // Zone 7: Contact
+      new THREE.Vector3(5, -2, -130),    // Zone 7: Media
+      new THREE.Vector3(0, 0, -160),     // Zone 8: Contact
     ];
 
     // Look-at targets per zone
@@ -37,6 +38,7 @@ export class World {
       new THREE.Vector3(0, 0, -80),
       new THREE.Vector3(0, 0, -110),
       new THREE.Vector3(0, 0, -140),
+      new THREE.Vector3(0, 0, -170),
     ];
 
     this.cameraPath = new THREE.CatmullRomCurve3(this.waypoints, false, 'catmullrom', 0.5);

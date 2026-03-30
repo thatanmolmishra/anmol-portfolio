@@ -2,7 +2,7 @@
  * overlay.js — HTML zone overlay fade in/out, stack card interactivity
  */
 export class Overlay {
-  constructor(totalZones = 8) {
+  constructor(totalZones = 9) {
     this.totalZones = totalZones;
     this.overlays = [];
     this.currentZone = -1;

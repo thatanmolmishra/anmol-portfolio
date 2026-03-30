@@ -2,7 +2,7 @@
  * nav.js — Zone navigation dots + zone label
  */
 export class Nav {
-  constructor(totalZones = 8) {
+  constructor(totalZones = 9) {
     this.totalZones = totalZones;
     this.currentZone = 0;
     this.dots = document.querySelectorAll('#nav-dots li');
@@ -10,7 +10,7 @@ export class Nav {
     this.zoneName = document.getElementById('zone-name');
     this.progressFill = document.getElementById('progress-fill');
 
-    const zoneNames = ['HOME', 'ABOUT', 'EXPERIENCE', 'SKILLS', 'ACHIEVEMENTS', 'PROJECTS', 'GLOBAL', 'CONTACT'];
+    const zoneNames = ['HOME', 'ABOUT', 'EXPERIENCE', 'SKILLS', 'ACHIEVEMENTS', 'PROJECTS', 'GLOBAL', 'MEDIA', 'CONTACT'];
 
     this.dots.forEach(dot => {
       dot.addEventListener('click', () => {
