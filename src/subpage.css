@@ -510,7 +510,7 @@
   font-weight: 700;
 }
 .media-tab-panel { display: none; }
-.media-tab-panel.active { display: block; }
+.media-tab-panel.active { display: block; padding: 2rem 0; }
 
 /* ============ YOUTUBE SECTION ============ */
 .yt-subtab-bar {

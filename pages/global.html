@@ -12,6 +12,13 @@
   <link rel="stylesheet" href="/src/subpage.css" />
 </head>
 <body class="subpage-body">
+<script>
+  // Theme persistence: read from localStorage
+  (function() {
+    var t = localStorage.getItem('theme');
+    if (t === 'light') document.body.classList.add('light-theme');
+  })();
+</script>
   <div id="cursor"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
 
   <nav class="subpage-nav">
