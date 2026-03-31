@@ -10,177 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/src/style.css" />
   <link rel="stylesheet" href="/src/subpage.css" />
-  <style>
-    :root { --c-accent: rgba(255,255,255,0.9); }
-
-    /* === BENTO GRID === */
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 180px;
-      gap: 1.2rem;
-      width: 100%;
-      padding: 0 0 4rem;
-    }
-
-    .bento-card {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      background: var(--color-card);
-      cursor: pointer;
-      transition: border-color 0.35s ease, transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease;
-    }
-    .bento-card:hover {
-      border-color: rgba(255,255,255,0.25);
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.6);
-    }
-    .bento-card.featured { grid-column: span 7; grid-row: span 2; }
-    .bento-card.medium   { grid-column: span 5; grid-row: span 2; }
-    .bento-card.wide     { grid-column: span 7; grid-row: span 1; }
-    .bento-card.tall     { grid-column: span 5; grid-row: span 3; }
-    .bento-card.small    { grid-column: span 4; grid-row: span 1; }
-    .bento-card.half     { grid-column: span 6; grid-row: span 1; }
-
-    @media (max-width: 900px) {
-      .bento-card.featured, .bento-card.medium, .bento-card.wide,
-      .bento-card.tall, .bento-card.small, .bento-card.half {
-        grid-column: span 12;
-        grid-row: span 1;
-        min-height: 200px;
-      }
-    }
-
-    /* Card BG image */
-    .bento-bg {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0.12;
-      transition: opacity 0.4s ease;
-      filter: grayscale(100%);
-    }
-    .bento-card:hover .bento-bg { opacity: 0.22; }
-
-    /* Gradient overlay */
-    .bento-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9) 40%, transparent 100%);
-    }
-
-    .bento-content {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 1.5rem;
-    }
-
-    .bento-top-labels {
-      position: absolute; top: 1.2rem; left: 1.2rem; right: 1.2rem;
-      display: flex; gap: 0.5rem; flex-wrap: wrap;
-      align-items: center; justify-content: space-between;
-    }
-
-    .bento-tag {
-      font-family: var(--font-mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 3px 8px;
-      border-radius: 20px;
-    }
-
-    .bento-date {
-      font-family: var(--font-mono);
-      font-size: 0.52rem;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.3);
-    }
-
-    .bento-org {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 0.3rem;
-      text-transform: uppercase;
-    }
-
-    h3.bento-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      line-height: 1.25;
-      color: var(--white);
-      margin-bottom: 0.4rem;
-    }
-
-    .featured h3.bento-title { font-size: 1.4rem; }
-    .tall h3.bento-title { font-size: 1.2rem; }
-
-    .bento-desc {
-      font-size: 0.72rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 0.8rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .bento-chips {
-      display: flex; flex-wrap: wrap; gap: 0.3rem;
-    }
-    .bento-chip {
-      font-size: 0.55rem;
-      font-family: var(--font-mono);
-      padding: 3px 9px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255, 0.1);
-      border-radius: 20px;
-      color: rgba(255,255,255,0.65);
-    }
-
-    .bento-link {
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-      font-size: 0.6rem;
-      font-family: var(--font-mono);
-      color: rgba(255,255,255,0.4);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .bento-link:hover { color: var(--white); }
-
-    /* Number accent for featured */
-    .bento-num {
-      position: absolute;
-      top: 1.2rem;
-      right: 5rem;
-      font-family: var(--font-mono);
-      font-size: 3rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.04);
-      line-height: 1;
-      letter-spacing: -0.05em;
-    }
-
-    /* Hover animated edge border */
-    .bento-card::after {
-      content: '';
-      position: absolute; inset: 0;
-      border-radius: 16px;
-      box-shadow: inset 0 0 0 1px transparent;
-      transition: box-shadow 0.3s ease;
-    }
-    .bento-card:hover::after {
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22);
-    }
-  </style>
 </head>
 <body class="subpage-body">
   <div id="cursor"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
@@ -193,136 +22,108 @@
   <div class="subpage-hero">
     <span class="section-tag">05 — Projects</span>
     <h1 class="subpage-title">Things I've<br/><em>Shipped</em></h1>
-    <p class="subpage-sub">Research, products, and engineering — each one a story worth telling.</p>
+    <p class="subpage-sub">Research, products, and engineering projects. Each one a story.</p>
   </div>
 
   <div class="subpage-content">
-    <div class="bento-grid">
+    <div class="ach-block-grid">
 
-      <!-- Featured: Research at IIT KGP -->
-      <div class="bento-card featured">
-        <img class="bento-bg" src="/img/media/youtube/yt1.jpg" alt="" />
-        <div class="bento-overlay"></div>
-        <div class="bento-num">01</div>
-        <div class="bento-top-labels">
-          <span class="bento-tag">Research · AI</span>
-          <span class="bento-date">Jun – Dec 2025</span>
+      <div class="ach-block-card featured">
+        <div class="ach-block-slider" data-images='["/img/media/youtube/yt1.jpg"]'>
+          <img class="ach-slide-img" src="/img/media/youtube/yt1.jpg" style="opacity:1;" alt="Multimodal QA Research" />
         </div>
-        <a href="https://github.com/thatanmolmishra" target="_blank" rel="noopener" class="bento-link">↗ Repository</a>
-        <div class="bento-content">
-          <div class="bento-org">IIT Kharagpur</div>
-          <h3 class="bento-title">Multimodal Question-Answer<br/>Data Collection</h3>
-          <p class="bento-desc">Fine-grained annotation of educational lecture videos for clarity, pedagogy, and critical thinking. Proposed an automatic subtitle correction pipeline to improve learning alignment and accessibility.</p>
-          <div class="bento-chips">
-            <span class="bento-chip">Python</span><span class="bento-chip">NLP</span><span class="bento-chip">Computer Vision</span><span class="bento-chip">Multimodal AI</span>
-          </div>
+        <div class="ach-block-body">
+          <div class="ach-block-badge">Research · AI</div>
+          <h3>Multimodal Question-Answer Data Collection</h3>
+          <p>A research project at IIT Kharagpur focused on building a high-quality dataset from educational lecture videos. Designed an automatic subtitle correction pipeline.</p>
+          <div class="ach-full-tags"><span>Python</span><span>NLP</span><span>CV</span><span>Multimodal AI</span></div>
+          <a href="https://github.com/thatanmolmishra" target="_blank" rel="noopener" class="view-more-btn" style="width: 100%; justify-content: center; font-size: 0.6rem; margin-top: 12px;">Read Paper ➚</a>
         </div>
       </div>
 
-      <!-- CozyPM – medium -->
-      <div class="bento-card medium">
-        <img class="bento-bg" src="/img/global/glb1.jpg" alt="" />
-        <div class="bento-overlay"></div>
-        <div class="bento-num">02</div>
-        <div class="bento-top-labels">
-          <span class="bento-tag">Product · Frontend</span>
-          <span class="bento-date">May – Sep 2024</span>
+      <div class="ach-block-card">
+        <div class="ach-block-slider" data-images='["/img/global/glb1.jpg"]'>
+          <img class="ach-slide-img" src="/img/global/glb1.jpg" style="opacity:1;" alt="CozyPM" />
         </div>
-        <a href="https://github.com/thatanmolmishra" target="_blank" rel="noopener" class="bento-link">↗ Live</a>
-        <div class="bento-content">
-          <div class="bento-org">Mind Inc.</div>
-          <h3 class="bento-title">CozyPM — Product Management Platform</h3>
-          <p class="bento-desc">Designed and built the full CozyPM front-end using React. Leveraged SQL and Excel analytics to achieve a 60% boost in product feasibility assessments.</p>
-          <div class="bento-chips">
-            <span class="bento-chip">React.js</span><span class="bento-chip">SQL</span><span class="bento-chip">Analytics</span>
-          </div>
+        <div class="ach-block-body">
+          <div class="ach-block-badge">Product & Eng</div>
+          <h3>CozyPM — Product Management Platform</h3>
+          <p>Designed and developed the full front-end of the CozyPM platform during my time as Associate PM, leading to a 60% improvement in product feasibility.</p>
+          <div class="ach-full-tags"><span>React.js</span><span>SQL</span><span>Product Management</span></div>
+          <a href="https://github.com/thatanmolmishra" target="_blank" rel="noopener" class="view-more-btn" style="width: 100%; justify-content: center; font-size: 0.6rem; margin-top: 12px;">View Live ➚</a>
         </div>
       </div>
 
-      <!-- IBM App — wide -->
-      <div class="bento-card wide">
-        <img class="bento-bg" src="/img/achievements/ibm/IMG-20221125-WA0023.jpg" alt="" />
-        <div class="bento-overlay"></div>
-        <div class="bento-top-labels">
-          <span class="bento-tag">Mobile · UX</span>
-          <span class="bento-date">Oct – Nov 2021</span>
+      <div class="ach-block-card">
+        <div class="ach-block-slider" data-images='["/img/achievements/ibm/IMG-20221125-WA0023.jpg"]'>
+          <img class="ach-slide-img" src="/img/achievements/ibm/IMG-20221125-WA0023.jpg" style="opacity:1;" alt="Expense Alert App" />
         </div>
-        <a href="https://github.com/thatanmolmishra" target="_blank" rel="noopener" class="bento-link">↗ Prototype</a>
-        <div class="bento-content">
-          <div class="bento-org">IBM</div>
-          <h3 class="bento-title">Paylo — Intelligent Expense Tracker</h3>
-          <div class="bento-chips">
-            <span class="bento-chip">Mobile UX</span><span class="bento-chip">IBM Cloud</span><span class="bento-chip">Wireframing</span><span class="bento-chip">Design Thinking</span>
-          </div>
+        <div class="ach-block-body">
+          <div class="ach-block-badge">Mobile App</div>
+          <h3>Paylo — Intelligent Expense Tracker</h3>
+          <p>Led wireframing and engineered intelligent notification alerts for a mobile expense tracking application during the IBM Student Internship.</p>
+          <div class="ach-full-tags"><span>Mobile UX</span><span>IBM Cloud</span><span>Wireframing</span></div>
+          <a href="https://github.com/thatanmolmishra" target="_blank" rel="noopener" class="view-more-btn" style="width: 100%; justify-content: center; font-size: 0.6rem; margin-top: 12px;">View Prototype ➚</a>
         </div>
       </div>
 
-      <!-- Intel Granger — small -->
-      <div class="bento-card half">
-        <div class="bento-overlay" style="background:rgba(0,0,0,0.92);"></div>
-        <div class="bento-top-labels">
-          <span class="bento-tag">AI · NLP</span>
-          <span class="bento-date">Dec 2020 – Mar 2021</span>
+      <div class="ach-block-card">
+        <div class="ach-block-slider" data-images='["/img/achievements/ibm/1747159562073.jpeg"]'>
+          <img class="ach-slide-img" src="/img/achievements/ibm/1747159562073.jpeg" style="opacity:1;" alt="YogaFlix" />
         </div>
-        <div class="bento-content">
-          <div class="bento-org">Intel AI for Youth</div>
-          <h3 class="bento-title">Granger — Multilingual Chatbot</h3>
-          <div class="bento-chips">
-            <span class="bento-chip">Python</span><span class="bento-chip">NLP</span><span class="bento-chip">BeautifulSoup</span>
-          </div>
+        <div class="ach-block-body">
+          <div class="ach-block-badge">Health-Tech · AI</div>
+          <h3>YogaFlix — Digital Wellness Platform</h3>
+          <p>AI-powered wellness platform. Won IBM EdTech Youth Challenge. IBM commissioned a global documentary about the project's impact.</p>
+          <div class="ach-full-tags"><span>AI</span><span>Wellness</span><span>IBM</span></div>
         </div>
       </div>
 
-      <!-- YogaFlix IBM — tall -->
-      <div class="bento-card tall">
-        <img class="bento-bg" src="/img/achievements/ibm/1747159562073.jpeg" alt="" />
-        <div class="bento-overlay"></div>
-        <div class="bento-num">03</div>
-        <div class="bento-top-labels">
-          <span class="bento-tag">Health-Tech · AI</span>
-          <span class="bento-date">2022</span>
+      <div class="ach-block-card">
+        <div class="ach-block-slider" data-images='["/img/achievements/celesta/1747940091652.jpeg"]'>
+          <img class="ach-slide-img" src="/img/achievements/celesta/1747940091652.jpeg" style="opacity:1;" alt="MediVista" />
         </div>
-        <div class="bento-content">
-          <div class="bento-org">IBM EdTech Challenge — Winner</div>
-          <h3 class="bento-title">YogaFlix — Digital Wellness Platform</h3>
-          <p class="bento-desc">AI-powered platform bridging mindfulness and technology. Won IBM EdTech Youth Challenge. IBM commissioned a global documentary about the project's impact.</p>
-          <div class="bento-chips">
-            <span class="bento-chip">AI</span><span class="bento-chip">Wellness</span><span class="bento-chip">IBM</span>
-          </div>
+        <div class="ach-block-body">
+          <div class="ach-block-badge">Healthcare · AI</div>
+          <h3>MediVista — Rural AI Telemedicine Kiosk</h3>
+          <p>AI-assisted telemedicine kiosk for rural India, designed to overcome infrastructure and literacy barriers. IIT KGP Celesta 1st Runner-Up.</p>
+          <div class="ach-full-tags"><span>AI</span><span>Healthcare</span><span>Rural India</span></div>
         </div>
       </div>
 
-      <!-- MediVista Celesta — medium -->
-      <div class="bento-card medium">
-        <img class="bento-bg" src="/img/achievements/celesta/1747940091652.jpeg" alt="" />
-        <div class="bento-overlay"></div>
-        <div class="bento-top-labels">
-          <span class="bento-tag">Healthcare · AI</span>
-          <span class="bento-date">2024</span>
+      <div class="ach-block-card">
+        <div class="ach-block-slider" data-images='["/img/media/med2.jpg"]'>
+          <img class="ach-slide-img" src="/img/media/med2.jpg" style="opacity:1;" alt="Social Impact AI" />
         </div>
-        <div class="bento-content">
-          <div class="bento-org">Celesta Hackathon — 1st Runner-Up</div>
-          <h3 class="bento-title">MediVista — Rural AI Telemedicine Kiosk</h3>
-          <p class="bento-desc">AI-assisted telemedicine kiosk for rural India, designed to overcome infrastructure and literacy barriers in healthcare. Presented at IIT KGP's flagship tech fest.</p>
-          <div class="bento-chips">
-            <span class="bento-chip">AI</span><span class="bento-chip">Healthcare</span><span class="bento-chip">Rural India</span>
-          </div>
+        <div class="ach-block-body">
+          <div class="ach-block-badge">AI for Social Good</div>
+          <h3>Social Impact AI Solutions — Intel AI for Youth</h3>
+          <p>Designed and implemented AI-driven solutions addressing real socio-economic challenges, specializing in data science, computer vision, and NLP.</p>
+          <div class="ach-full-tags"><span>Python</span><span>Computer Vision</span><span>NLP</span><span>AI</span></div>
         </div>
       </div>
 
-      <!-- GRUEN small -->
-      <div class="bento-card half">
-        <div class="bento-overlay" style="background:rgba(0,0,0,0.92);"></div>
-        <div class="bento-top-labels">
-          <span class="bento-tag">Sustainability · Design</span>
-          <span class="bento-date">2021</span>
+      <div class="ach-block-card">
+        <div class="ach-block-slider" data-images='["/img/media/med1.jpg"]'>
+          <img class="ach-slide-img" src="/img/media/med1.jpg" style="opacity:1;" alt="Granger Chatbot" />
         </div>
-        <div class="bento-content">
-          <div class="bento-org">Erasmus+ GRUEN — Global 3rd Place</div>
-          <h3 class="bento-title">Green City Model — Indian Urban Design</h3>
-          <div class="bento-chips">
-            <span class="bento-chip">Sustainability</span><span class="bento-chip">Urban Design</span><span class="bento-chip">Policy</span>
-          </div>
+        <div class="ach-block-body">
+          <div class="ach-block-badge">AI · NLP</div>
+          <h3>Granger — Multilingual Chatbot</h3>
+          <p>Built during Intel AI for Youth program. NLP-powered multilingual chatbot using BeautifulSoup and Python for knowledge extraction.</p>
+          <div class="ach-full-tags"><span>Python</span><span>NLP</span><span>BeautifulSoup</span></div>
+        </div>
+      </div>
+
+      <div class="ach-block-card">
+        <div class="ach-block-slider" data-images='["/img/media/med3.jpg"]'>
+          <img class="ach-slide-img" src="/img/media/med3.jpg" style="opacity:1;" alt="Green City Model" />
+        </div>
+        <div class="ach-block-body">
+          <div class="ach-block-badge">Sustainability · Design</div>
+          <h3>Green City Model — Erasmus+ GRUEN</h3>
+          <p>Global 3rd place in the Erasmus+ GRUEN urban sustainability competition. Designed an Indian green city model addressing climate resilience.</p>
+          <div class="ach-full-tags"><span>Sustainability</span><span>Urban Design</span><span>Policy</span></div>
         </div>
       </div>
 
@@ -336,7 +137,6 @@
         <a href="https://www.linkedin.com/in/that-anmol-mishra/" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
         <a href="https://github.com/thatanmolmishra" target="_blank" rel="noopener" class="social-link">GitHub</a>
         <a href="mailto:byanmolmishra@gmail.com" class="social-link">Email</a>
-        <a href="https://www.imdb.com/name/nm18221555/" target="_blank" rel="noopener" class="social-link">IMDb</a>
       </div>
       <p class="social-footer-copy">© 2025 Anmol Mishra. All rights reserved.</p>
     </div>
@@ -355,10 +155,25 @@
       ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
       requestAnimationFrame(animate);
     })();
-
     document.getElementById('back-btn').addEventListener('click', () => {
       const saved = sessionStorage.getItem('portfolioScroll');
       if (saved !== null) sessionStorage.setItem('restoreScroll', saved);
+    });
+
+    // Image sliders
+    document.querySelectorAll('.ach-block-slider').forEach(slider => {
+      const imagesAttr = slider.dataset.images;
+      if (!imagesAttr) return;
+      const images = JSON.parse(imagesAttr);
+      let cur = 0;
+      const img = slider.querySelector('.ach-slide-img');
+      const curEl = slider.querySelector('.ach-slide-cur');
+      const prevBtn = slider.querySelector('.ach-slide-prev');
+      const nextBtn = slider.querySelector('.ach-slide-next');
+      const update = () => { img.style.opacity = 0; setTimeout(() => { img.src = images[cur]; img.style.opacity = 1; }, 150); if (curEl) curEl.textContent = cur + 1; };
+      if (prevBtn) prevBtn.addEventListener('click', () => { cur = (cur - 1 + images.length) % images.length; update(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { cur = (cur + 1) % images.length; update(); });
+      if (images.length <= 1 && prevBtn) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; }
     });
   </script>
 </body>

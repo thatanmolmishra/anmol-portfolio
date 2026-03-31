@@ -83,7 +83,7 @@ body.light-theme {
 }
 
 body.light-theme #canvas {
-  filter: sepia(0.8) saturate(0.5) brightness(1.1);
+  /* Scene background is now set directly in world.js */
 }
 
 body.light-theme nav,
