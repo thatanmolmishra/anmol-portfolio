@@ -50,76 +50,139 @@
 /* ============ DESERT LIGHT THEME ============ */
 /* Activated by adding class 'light-theme' to <body> */
 body.light-theme {
-  --black:        #2D1A0E;
-  --off-black:    #3D2510;
-  --charcoal-deep:#5C3A1E;
-  --charcoal:     #8B5E3C;
-  --charcoal-mid: #C4A882;
-  --charcoal-light:#D9C7A3;
-  --grey-dark:    #A07850;
-  --grey-mid:     #C4A882;
-  --grey:         #D9C7A3;
-  --grey-light:   #E8DFC0;
-  --mist:         #F0E8D0;
+  --black:        #1A0E05;
+  --off-black:    #2D1A0E;
+  --charcoal-deep:#3D2510;
+  --charcoal:     #5C3A1E;
+  --charcoal-mid: #8B5E3C;
+  --charcoal-light:#C4A882;
+  --grey-dark:    #5C3A1E;
+  --grey-mid:     #8B5E3C;
+  --grey:         #A07850;
+  --grey-light:   #C4A882;
+  --mist:         #E8DFC0;
   --off-white:    #F5EED8;
-  --white:        #2D1A0E;
+  --white:        #1A0E05;
 
   --bg:           #F5EED8;
-  --surface:      rgba(0,0,0,0.04);
-  --surface-2:    rgba(0,0,0,0.07);
-  --border:       rgba(0,0,0,0.09);
-  --border-hi:    rgba(0,0,0,0.2);
+  --surface:      rgba(45,26,14,0.05);
+  --surface-2:    rgba(45,26,14,0.08);
+  --border:       rgba(45,26,14,0.12);
+  --border-hi:    rgba(45,26,14,0.25);
 
-  --text:         #2D1A0E;
-  --text-mid:     #5C3A1E;
-  --text-dim:     #8B5E3C;
-  --text-faint:   #C4A882;
-  --text-ghost:   rgba(45,26,14,0.25);
+  /* HIGH CONTRAST TEXT — dark espresso on sand */
+  --text:         #1A0E05;
+  --text-mid:     #2D1A0E;
+  --text-dim:     #3D2510;
+  --text-faint:   #8B5E3C;
+  --text-ghost:   rgba(45,26,14,0.3);
 
   --glow-white:   0 0 30px rgba(139,94,60,0.12);
 
   background: #F5EED8 !important;
-  color: #2D1A0E !important;
+  color: #1A0E05 !important;
 }
 
+/* --- 3D Canvas in Light Mode --- */
 body.light-theme #canvas {
-  /* Scene background is now set directly in world.js */
+  /* Scene background set in world.js; no CSS filter needed */
 }
 
+/* --- Images: remove dark grayscale, make warm and bright --- */
+body.light-theme .zone-overlay img,
+body.light-theme .about-portrait,
+body.light-theme .zone-image {
+  filter: brightness(1.15) contrast(1.05) sepia(0.15);
+}
+body.light-theme .ach-slide-img,
+body.light-theme .yt-thumb,
+body.light-theme .profile-img {
+  filter: grayscale(20%) brightness(1.1) sepia(0.1) !important;
+}
+
+/* --- Navigation --- */
 body.light-theme nav,
-body.light-theme .subpage-nav { border-bottom: 1px solid rgba(45,26,14,0.12); }
+body.light-theme .subpage-nav { border-bottom: 1px solid rgba(45,26,14,0.15); background: rgba(245,238,216,0.85); }
 body.light-theme .nav-logo,
-body.light-theme .subpage-nav a { color: #2D1A0E; }
-body.light-theme .media-tab-btn { color: #8B5E3C; border-color: rgba(45,26,14,0.15); }
-body.light-theme .media-tab-btn.active { color: #2D1A0E; border-color: #2D1A0E; }
-body.light-theme .ach-block-card { background: #F0E8D0; border-color: rgba(45,26,14,0.12); }
-body.light-theme .ach-block-body h3 { color: #2D1A0E; }
-body.light-theme .ach-block-body p { color: #8B5E3C; }
-body.light-theme .ach-block-badge { background: rgba(45,26,14,0.06); color: #5C3A1E; border-color: rgba(45,26,14,0.15); }
-body.light-theme .ach-full-tags span { background: rgba(45,26,14,0.06); color: #5C3A1E; border-color: rgba(45,26,14,0.15); }
+body.light-theme .subpage-nav a { color: #1A0E05; }
+
+/* --- Tabs --- */
+body.light-theme .media-tab-btn { color: #5C3A1E; border-color: rgba(45,26,14,0.18); }
+body.light-theme .media-tab-btn.active { color: #1A0E05; border-color: #1A0E05; background: rgba(45,26,14,0.06); }
+
+/* --- Cards --- */
+body.light-theme .ach-block-card { background: rgba(245,238,216,0.7); border-color: rgba(45,26,14,0.15); }
+body.light-theme .ach-block-card:hover { border-color: rgba(45,26,14,0.35); box-shadow: 0 8px 30px rgba(45,26,14,0.1); }
+body.light-theme .ach-block-body h3 { color: #1A0E05; }
+body.light-theme .ach-block-body p { color: #3D2510; }
+body.light-theme .ach-block-badge { background: rgba(45,26,14,0.08); color: #3D2510; border-color: rgba(45,26,14,0.18); }
+body.light-theme .ach-full-tags span { background: rgba(45,26,14,0.06); color: #3D2510; border-color: rgba(45,26,14,0.15); }
+
+/* --- YouTube cards --- */
+body.light-theme .yt-card { background: rgba(245,238,216,0.7); border-color: rgba(45,26,14,0.15); }
+body.light-theme .yt-card:hover { border-color: #c0392b; }
+body.light-theme .yt-card-body h4 { color: #1A0E05; }
+body.light-theme .yt-card-body p { color: #3D2510; }
+
+/* --- Headings & Hero --- */
 body.light-theme .hero-name,
 body.light-theme .section-title,
-body.light-theme .subpage-title { color: #2D1A0E; }
-body.light-theme .hero-eyebrow,
-body.light-theme .about-bio-text { color: #5C3A1E; }
+body.light-theme .subpage-title { color: #1A0E05; }
+body.light-theme .hero-eyebrow { color: #3D2510; }
+body.light-theme .about-bio-text { color: #2D1A0E; }
+body.light-theme .subpage-hero,
+body.light-theme .section-tag,
+body.light-theme .subpage-sub { color: #2D1A0E; }
+
+/* --- Zone overlay text: needs background for readability over light 3D canvas --- */
+body.light-theme .zone-overlay {
+  color: #1A0E05;
+  text-shadow: 0 1px 3px rgba(245,238,216,0.6);
+}
+
+/* --- Loader --- */
 body.light-theme #loader { background: #F5EED8; }
-body.light-theme .loader-logo { color: #2D1A0E; }
+body.light-theme .loader-logo { color: #1A0E05; }
 body.light-theme .loader-bar-wrap { background: rgba(45,26,14,0.12); }
 body.light-theme .loader-bar { background: #2D1A0E; }
-body.light-theme .zone-overlay { color: #2D1A0E; }
-body.light-theme #zone-nav { background: rgba(245,238,216,0.75); }
+
+/* --- Progress & Nav --- */
+body.light-theme #zone-nav { background: rgba(245,238,216,0.85); }
 body.light-theme #zone-nav li .dot { border-color: rgba(45,26,14,0.3); }
-body.light-theme #zone-nav li.active .dot { background: #2D1A0E; }
+body.light-theme #zone-nav li.active .dot { background: #1A0E05; }
 body.light-theme #progress-bar { background: rgba(45,26,14,0.12); }
 body.light-theme #progress-fill { background: linear-gradient(to bottom, #8B5E3C, #2D1A0E); }
-body.light-theme #zone-label { background: rgba(245,238,216,0.7); color: #2D1A0E; }
-body.light-theme .view-more-btn { color: #2D1A0E; border-color: rgba(45,26,14,0.3); }
+body.light-theme #zone-label { background: rgba(245,238,216,0.85); color: #1A0E05; }
+
+/* --- Buttons --- */
+body.light-theme .view-more-btn { color: #1A0E05; border-color: rgba(45,26,14,0.35); }
 body.light-theme .view-more-btn:hover { background: #2D1A0E; color: #F5EED8; }
 body.light-theme .btn-primary { background: #2D1A0E; color: #F5EED8; }
-body.light-theme .btn-ghost { color: #2D1A0E; border-color: rgba(45,26,14,0.4); }
+body.light-theme .btn-ghost { color: #1A0E05; border-color: rgba(45,26,14,0.4); }
+
+/* --- Cursor --- */
 body.light-theme #cursor-dot { background: #2D1A0E; }
 body.light-theme #cursor-ring { border-color: #2D1A0E; }
-body.light-theme .subpage-hero, body.light-theme .section-tag { color: #2D1A0E; }
+
+/* --- Stats bar on media page --- */
+body.light-theme .media-stats-bar { background: rgba(45,26,14,0.06); border-color: rgba(45,26,14,0.12); }
+body.light-theme .msb-val { color: #1A0E05; }
+body.light-theme .msb-label { color: #5C3A1E; }
+
+/* --- Skill bars on skills page --- */
+body.light-theme .skill-bar-item .sb-name { color: #1A0E05; }
+body.light-theme .skill-bar-item .sb-level { color: #3D2510; }
+body.light-theme .sb-track { background: rgba(45,26,14,0.1); }
+body.light-theme .stl { background: rgba(45,26,14,0.08); color: #2D1A0E; border-color: rgba(45,26,14,0.18); }
+body.light-theme .lang-card { background: rgba(45,26,14,0.05); border-color: rgba(45,26,14,0.12); }
+body.light-theme .lang-name { color: #1A0E05; }
+body.light-theme .lang-level { color: #3D2510; }
+
+/* --- Footer --- */
+body.light-theme .subpage-footer { border-top: 1px solid rgba(45,26,14,0.1); }
+body.light-theme .social-footer-label { color: #3D2510; }
+body.light-theme .social-link { color: #2D1A0E; border-color: rgba(45,26,14,0.15); }
+body.light-theme .social-footer-copy { color: #8B5E3C; }
 
 /* Theme Toggle Button */
 .theme-toggle {
@@ -148,11 +211,11 @@ body.light-theme .subpage-hero, body.light-theme .section-tag { color: #2D1A0E; 
 }
 body.light-theme .theme-toggle {
   border-color: rgba(45,26,14,0.25);
-  background: rgba(45,26,14,0.06);
+  background: rgba(245,238,216,0.8);
 }
 body.light-theme .theme-toggle:hover {
   border-color: rgba(45,26,14,0.5);
-  background: rgba(45,26,14,0.1);
+  background: rgba(245,238,216,0.95);
 }
 
 

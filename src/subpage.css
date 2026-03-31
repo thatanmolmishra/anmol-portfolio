@@ -369,13 +369,14 @@
 .ach-block-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 1rem;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem 0;
 }
 .ach-block-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -442,11 +443,11 @@
 }
 /* Card Body */
 .ach-block-body {
-  padding: 1.25rem 1.5rem 1.5rem;
+  padding: 1.5rem 1.75rem 1.75rem;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 0.3rem;
 }
 .ach-block-badge {
   font-family: var(--font-mono);
