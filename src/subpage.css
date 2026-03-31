@@ -512,6 +512,37 @@
 .media-tab-panel { display: none; }
 .media-tab-panel.active { display: block; padding: 2rem 0; }
 
+/* --- Compact cards for Newspapers & Celebs (match All tab sizing) --- */
+#tab-newspapers .ach-block-slider,
+#tab-celebs .ach-block-slider {
+  aspect-ratio: 4/3;
+  max-height: 180px;
+}
+#tab-newspapers .ach-block-card,
+#tab-celebs .ach-block-card {
+  border-radius: 14px;
+}
+#tab-newspapers .ach-block-card.featured,
+#tab-celebs .ach-block-card.featured {
+  grid-column: span 1; /* no spanning — same size as other cards */
+}
+#tab-newspapers .ach-block-body,
+#tab-celebs .ach-block-body {
+  padding: 1rem 1.25rem 1.25rem;
+}
+#tab-newspapers .ach-block-body h3,
+#tab-celebs .ach-block-body h3 {
+  font-size: 0.9rem;
+}
+#tab-newspapers .ach-block-body p,
+#tab-celebs .ach-block-body p {
+  font-size: 0.78rem;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* ============ YOUTUBE SECTION ============ */
 .yt-subtab-bar {
   display: flex;

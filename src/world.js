@@ -66,11 +66,7 @@ export class World {
 
   initScene() {
     this.scene = new THREE.Scene();
-    this.darkBg = new THREE.Color(0x000000);
-    this.lightBg = new THREE.Color(0xF5EED8); // Desert sand beige
-    this.darkFog = new THREE.Color(0x000000);
-    this.lightFog = new THREE.Color(0xE8DFC0); // Desert fog
-    this.scene.background = this.darkBg;
+    this.scene.background = new THREE.Color(0x000000);
     this.scene.fog = new THREE.FogExp2(0x000000, 0.008);
 
     this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 500);
@@ -114,13 +110,6 @@ export class World {
     this.zones.forEach(zone => {
       if (zone.update) zone.update(elapsed, t);
     });
-
-    // Theme-aware background
-    const isLight = document.body.classList.contains('light-theme');
-    this.scene.background.copy(isLight ? this.lightBg : this.darkBg);
-    if (this.scene.fog) {
-      this.scene.fog.color.copy(isLight ? this.lightFog : this.darkFog);
-    }
 
     this.renderer.render(this.scene, this.camera);
   }
